@@ -73,6 +73,34 @@ def total_images_check (annotation_file, destination_file_path ='./', classes=[]
         writer = csv.writer(file)
         writer.writerow(["Unique Images", total_unique_images])
 
+def count_categories(annotation_path):
+    # Initialize the COCO object
+    coco = COCO(annotation_path)
+    
+    # Get all category IDs
+    category_ids = coco.getCatIds()
+    
+    # Get all categories
+    categories = coco.loadCats(category_ids)
+    
+    # Create a dictionary to store category names and their counts
+    category_count = {cat['name']: 0 for cat in categories}
+    
+    # Iterate over all category IDs
+    for cat_id in category_ids:
+        # Get all annotation IDs for the category
+        annotation_ids = coco.getAnnIds(catIds=[cat_id])
+        
+        # Get the category name
+        category_name = coco.loadCats([cat_id])[0]['name']
+        
+        # Store the count of annotations for the category
+        category_count[category_name] = len(annotation_ids)
+    
+    # Print the counts per category
+    for category_name, count in category_count.items():
+        print(f"Category: {category_name}, Count: {count}")
 
-count_annotation(annotation_file, dest_file, 'category_bruh.csv')
-total_images_check(annotation_file, dest_file, T1_COCO_CLASS_NAMES, 'total_images.csv')
+count_categories('json_coco_file/T1_instances_train2017_split.json')
+# count_annotation(annotation_file, dest_file, 'category_bruh.csv')
+# total_images_check(annotation_file, dest_file, T1_COCO_CLASS_NAMES, 'total_images.csv')
