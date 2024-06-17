@@ -89,8 +89,8 @@ def filter_annotations_nonstrict(annotation_path, destination_path, categories):
         json.dump(new_coco_data, f, indent=4)
 
 # Usage
-annotation_path = 'datasets/annotations/instances_val2017.json'
-destination_path = 'datasets/json_coco_file/'
+annotation_path = '../annotations/instances_train2017.json'
+destination_path = '../json_coco_file/'
 spliting_file_name = ["T1_instances_train2017_split.json","T2_instances_train2017_split.json","T3_instances_train2017_split.json","T4_instances_train2017_split.json"]
 Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
 

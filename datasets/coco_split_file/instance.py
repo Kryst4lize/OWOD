@@ -100,7 +100,8 @@ def count_categories(annotation_path):
     # Print the counts per category
     for category_name, count in category_count.items():
         print(f"Category: {category_name}, Count: {count}")
+    print("Total categories:", len(category_count))
 
-count_categories('json_coco_file/T1_instances_train2017_split.json')
+count_categories('../json_coco_file/T1_instances_train2017_split.json')
 # count_annotation(annotation_file, dest_file, 'category_bruh.csv')
 # total_images_check(annotation_file, dest_file, T1_COCO_CLASS_NAMES, 'total_images.csv')
