@@ -24,6 +24,8 @@ T4_CLASS_NAMES = [
     "wine glass", "cup", "fork", "knife", "spoon", "bowl"
 ]
 
+#Not include unspecified classes
+
 def filter_annotations(annotation_path, destination_path, include_classes):
     # Load the original JSON file
     with open(annotation_path, 'r') as f:
@@ -36,7 +38,6 @@ def filter_annotations(annotation_path, destination_path, include_classes):
     filtered_images = [img for img in data['images'] if img['id'] in image_ids]
     filtered_categories = [category for category_id, category in category_ids.items()]
 
-    # Create the new JSON structure
     filtered_data = {
         'info': data.get('info', {}),
         'licenses': data.get('licenses', []),
@@ -51,12 +52,54 @@ def filter_annotations(annotation_path, destination_path, include_classes):
 
     print(f'Filtered JSON file created successfully at {destination_path}')
 
+# Including specified classes 
+def filter_annotations_nonstrict(annotation_path, destination_path, categories):
+    # Load the original JSON file
+    with open(annotation_path, 'r') as f:
+        data = json.load(f)
+
+    # Create a mapping from category id to category name
+    category_name_to_id = {cat['name']: cat['id'] for cat in data['categories']}
+    selected_category_ids = set(category_name_to_id[cat] for cat in categories if cat in category_name_to_id)
+
+    new_coco_data = {
+        'info': data.get('info', {}),
+        'licenses': data.get('licenses', []),
+        'images': [],
+        'annotations': [],
+        'categories': data['categories']  # Keep all categories
+    }
+    image_ids = set()
+
+    # Collect image ids that have at least one annotation in the selected categories
+    for ann in data['annotations']:
+        if ann['category_id'] in selected_category_ids:
+            image_ids.add(ann['image_id'])
+
+    # Filter annotations based on collected image ids
+    for ann in data['annotations']:
+        if ann['image_id'] in image_ids:
+            new_coco_data['annotations'].append(ann)
+
+    # Filter images based on collected image ids
+    new_coco_data['images'] = [img for img in data['images'] if img['id'] in image_ids]
+
+    # Write the new JSON data to the output file
+    with open(destination_path, 'w') as f:
+        json.dump(new_coco_data, f, indent=4)
+
 # Usage
-annotation_path = '../annotations/instances_train2017.json'
-destination_path = '../json_coco_file/'
+annotation_path = 'datasets/annotations/instances_val2017.json'
+destination_path = 'datasets/json_coco_file/'
 spliting_file_name = ["T1_instances_train2017_split.json","T2_instances_train2017_split.json","T3_instances_train2017_split.json","T4_instances_train2017_split.json"]
 Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
 
 
+"""
 for i in range(4):
-    filter_annotations(annotation_path, destination_path + spliting_file_name[i], Class[i])
+    # filter_annotations(annotation_path, destination_path + spliting_file_name[i], Class[i])
+
+    # Dung cai nay neu muon filter theo cac class co san trong COCO (ca class chinh va class phu)
+    filter_annotations_nonstrict(annotation_path, destination_path + spliting_file_name[i], Class[i])
+"""
+filter_annotations_nonstrict(annotation_path, destination_path + spliting_file_name[0], Class[0])
