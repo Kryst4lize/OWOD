@@ -8,13 +8,9 @@ def masking_json(input_json, output_json, categories, num_images= 15000):
     # Create a mapping from category id to category name
     category_name_to_id = {cat['name']: cat['id'] for cat in data['categories']}
     category_id_to_name = {cat['id']: cat['name'] for cat in data['categories']}
-    
-    print(f"Original categories: {category_name_to_id}")
-    print(f"Original categories: {category_id_to_name}")
 
     # Filter out category IDs based on the provided category names
     selected_category_ids = set(category_name_to_id[cat] for cat in categories if cat in category_name_to_id)
-    print(f"Selected category IDs: {selected_category_ids}")
 
     unknown_category_id = max(category_name_to_id.values()) + 1
     new_categories = [{'id': category_name_to_id[cat], 'name': cat} for cat in categories if cat in category_name_to_id]

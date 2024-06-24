@@ -2,7 +2,7 @@ import json
 import argparse
 from collections import defaultdict
 
-def filter_and_select_images(input_json, output_json, min_max_images, categories):
+def filter_and_select_images(input_json, output_json,categories, min_max_images= [20000, 50000]):
     with open(input_json, 'r') as f:
         coco_data = json.load(f)
 
@@ -40,6 +40,7 @@ def filter_and_select_images(input_json, output_json, min_max_images, categories
             rating = calculate_rating(image_annotations[image['id']])
             if rating >= 80:  # Rating >= 20% of specified categories
                 selected_images.append((image, rating))
+
     # Criteria 2: Ensure total instances of each class >= 50% of total instances in annotation file
     def count_instances(images):
         instance_count = defaultdict(int)
@@ -55,11 +56,16 @@ def filter_and_select_images(input_json, output_json, min_max_images, categories
         return True
 
     selected_images.sort(key=lambda x: x[1], reverse=True)  # Sort images by rating in descending order
+    with open("image_ratings.txt", "w") as rating_file:
+        rating_file.write("Ratings of selected images (sorted):\n")
+        for image, rating in selected_images:
+            rating_file.write(f"Image ID: {image['id']}, Rating: {rating}%\n")
+            print(f"Image ID: {image['id']}, Rating: {rating}%")
 
     filtered_images = []
     instance_count = count_instances(filtered_images)
     for image, rating in selected_images:
-        if len(filtered_images) >= min_max_images[1]:
+        if len(filtered_images) >= 50000:
             break
         filtered_images.append((image, rating))
         instance_count = count_instances(filtered_images)
@@ -69,13 +75,14 @@ def filter_and_select_images(input_json, output_json, min_max_images, categories
     # Add more images if criteria 2 is not met
     if not meets_criteria(instance_count):
         for image, rating in selected_images:
-            if len(filtered_images) >= min_max_images[1]:
+            if len(filtered_images) >= 50000:
                 break
             if (image, rating) not in filtered_images:
                 filtered_images.append((image, rating))
                 instance_count = count_instances(filtered_images)
                 if meets_criteria(instance_count):
                     break
+
     # Prepare the new dataset
     final_images = [img for img, _ in filtered_images]
     final_image_ids = {img['id'] for img in final_images}
