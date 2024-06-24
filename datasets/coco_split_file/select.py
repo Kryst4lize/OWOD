@@ -23,7 +23,23 @@ def filter_and_select_images(input_json, output_json, min_max_images, categories
     for category, count in total_instances.items():
         print(f"Category: {category}, Count: {count}")
 
+    # Criteria 1: Filter images based on the percentage of 'unknown' instances
+    image_annotations = defaultdict(list)
+    for ann in coco_data['annotations']:
+        image_annotations[ann['image_id']].append(ann)
 
+    def calculate_rating(annotations):
+        total_instances = len(annotations)
+        unknown_instances = sum(1 for ann in annotations if ann['category_id'] == unknown_category_id)
+        rating = (1 - unknown_instances / total_instances) * 100
+        return rating
+
+    selected_images = []
+    for image in coco_data['images']:
+        if image['id'] in image_annotations:
+            rating = calculate_rating(image_annotations[image['id']])
+            if rating >= 80:  # Rating >= 20% of specified categories
+                selected_images.append((image, rating))
 
     new_coco_data = {
         'info': coco_data.get('info', {}),
