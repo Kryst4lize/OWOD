@@ -2,6 +2,7 @@ import json
 import random 
 
 def masking_json(input_json, output_json, categories, num_images= 15000):
+    print("Running masking_json function")
     with open(input_json, 'r') as f:
         data = json.load(f)
 
@@ -11,6 +12,18 @@ def masking_json(input_json, output_json, categories, num_images= 15000):
 
     # Filter out category IDs based on the provided category names
     selected_category_ids = set(category_name_to_id[cat] for cat in categories if cat in category_name_to_id)
+
+    # Randomly select the specified number of image ids
+    if len(image_ids) > num_images:
+        image_ids = set(random.sample(image_ids, num_images))
+
+    # Track image ids that should be included
+    image_ids = set()
+
+    # Collect image ids that have at least one annotation in the selected categories
+    for ann in data['annotations']:
+        if ann['category_id'] in selected_category_ids:
+            image_ids.add(ann['image_id'])
 
     structure = {
         'info': data.get('info', {}),
@@ -22,17 +35,6 @@ def masking_json(input_json, output_json, categories, num_images= 15000):
 
     unknown_category_id = max(category_name_to_id.values()) + 1
 
-    # Track image ids that should be included
-    image_ids = set()
-
-    # Randomly select the specified number of image ids
-    if len(image_ids) > num_images:
-        image_ids = set(random.sample(image_ids, num_images))
-
-    # Collect image ids that have at least one annotation in the selected categories
-    for ann in data['annotations']:
-        if ann['category_id'] in selected_category_ids:
-            image_ids.add(ann['image_id'])
 
     # Filter annotations based on collected image ids and change unspecified categories to 'unknown'
     for ann in data['annotations']:

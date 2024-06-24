@@ -1,5 +1,7 @@
 import json
 
+# All utitlities to split the COCO dataset
+
 T1_COCO_CLASS_NAMES = [
     "airplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat",
     "chair", "cow", "dining table", "dog", "horse", "motorcycle", "person",
@@ -89,11 +91,12 @@ def filter_annotations_nonstrict(annotation_path, destination_path, categories):
         json.dump(new_coco_data, f, indent=4)
 
 # Usage
+"""
 annotation_path = '../annotations/instances_train2017.json'
 destination_path = '../json_coco_file/'
 spliting_file_name = ["T1_instances_train2017_split.json","T2_instances_train2017_split.json","T3_instances_train2017_split.json","T4_instances_train2017_split.json"]
 Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
-
+"""
 
 """
 for i in range(4):
@@ -102,4 +105,3 @@ for i in range(4):
     # Dung cai nay neu muon filter theo cac class co san trong COCO (ca class chinh va class phu)
     filter_annotations_nonstrict(annotation_path, destination_path + spliting_file_name[i], Class[i])
 """
-filter_annotations_nonstrict(annotation_path, destination_path + spliting_file_name[0], Class[0])
