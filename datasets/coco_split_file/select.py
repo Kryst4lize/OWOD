@@ -73,6 +73,17 @@ def filter_and_select_images(input_json, output_json, min_max_images, categories
         instance_count = count_instances(filtered_images)
         if meets_criteria(instance_count):
             break
+    
+    # Add more images if criteria 2 is not met
+    if not meets_criteria(instance_count):
+        for image, rating in selected_images:
+            if len(filtered_images) >= min_max_images[1]:
+                break
+            if (image, rating) not in filtered_images:
+                filtered_images.append((image, rating))
+                instance_count = count_instances(filtered_images)
+                if meets_criteria(instance_count):
+                    break
 
     # Write the new JSON data to the output file
     with open(output_json, 'w') as f:
