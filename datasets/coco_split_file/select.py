@@ -40,14 +40,6 @@ def filter_and_select_images(input_json, output_json, min_max_images, categories
             rating = calculate_rating(image_annotations[image['id']])
             if rating >= 80:  # Rating >= 20% of specified categories
                 selected_images.append((image, rating))
-
-    new_coco_data = {
-        'info': coco_data.get('info', {}),
-        'licenses': coco_data.get('licenses', []),
-        'images': [],
-        'annotations': [],
-        'categories': coco_data['categories']
-    }
     # Criteria 2: Ensure total instances of each class >= 50% of total instances in annotation file
     def count_instances(images):
         instance_count = defaultdict(int)
