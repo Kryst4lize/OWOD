@@ -48,6 +48,31 @@ def filter_and_select_images(input_json, output_json, min_max_images, categories
         'annotations': [],
         'categories': coco_data['categories']
     }
+    # Criteria 2: Ensure total instances of each class >= 50% of total instances in annotation file
+    def count_instances(images):
+        instance_count = defaultdict(int)
+        for image, _ in images:
+            for ann in image_annotations[image['id']]:
+                instance_count[category_id_to_name.get(ann['category_id'], 'unknown')] += 1
+        return instance_count
+
+    def meets_criteria(instance_count):
+        for category in categories:
+            if instance_count[category] < 0.5 * total_instances[category]:
+                return False
+        return True
+
+    selected_images.sort(key=lambda x: x[1], reverse=True)  # Sort images by rating in descending order
+
+    filtered_images = []
+    instance_count = count_instances(filtered_images)
+    for image, rating in selected_images:
+        if len(filtered_images) >= min_max_images[1]:
+            break
+        filtered_images.append((image, rating))
+        instance_count = count_instances(filtered_images)
+        if meets_criteria(instance_count):
+            break
 
     # Write the new JSON data to the output file
     with open(output_json, 'w') as f:
