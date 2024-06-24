@@ -85,18 +85,18 @@ def filter_and_select_images(input_json, output_json, min_max_images, categories
                 if meets_criteria(instance_count):
                     break
     # Prepare the new dataset
-        final_images = [img for img, _ in filtered_images]
-        final_image_ids = {img['id'] for img in final_images}
-        new_annotations = [ann for ann in coco_data['annotations'] if ann['image_id'] in final_image_ids]
+    final_images = [img for img, _ in filtered_images]
+    final_image_ids = {img['id'] for img in final_images}
+    new_annotations = [ann for ann in coco_data['annotations'] if ann['image_id'] in final_image_ids]
 
-        new_coco_data = {
-            'info': coco_data.get('info', {}),
-            'licenses': coco_data.get('licenses', []),
-            'images': final_images,
-            'annotations': new_annotations,
-            'categories': coco_data['categories']
+    new_coco_data = {
+        'info': coco_data.get('info', {}),
+        'licenses': coco_data.get('licenses', []),
+        'images': final_images,
+        'annotations': new_annotations,
+        'categories': coco_data['categories']
         }
 
-        # Write the new JSON data to the output file
-        with open(output_json, 'w') as f:
-            json.dump(new_coco_data, f, indent=4)
+    # Write the new JSON data to the output file
+    with open(output_json, 'w') as f:
+        json.dump(new_coco_data, f, indent=4)
