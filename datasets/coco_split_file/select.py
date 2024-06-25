@@ -9,7 +9,7 @@ def filter_and_select_images(input_json, output_json,categories, min_max_images=
     # Create a mapping from category id to category name and vice versa
     category_name_to_id = {cat['name']: cat['id'] for cat in coco_data['categories']}
     category_id_to_name = {cat['id']: cat['name'] for cat in coco_data['categories']}
-    unknown_category_id = max(category_name_to_id.values()) + 1
+    unknown_category_id = max(category_name_to_id.values())
 
     # Filter out category IDs based on the provided category names
     selected_category_ids = set(category_name_to_id[cat] for cat in categories if cat in category_name_to_id)
@@ -17,7 +17,7 @@ def filter_and_select_images(input_json, output_json,categories, min_max_images=
     # Initialize counters for total instances in each class
     total_instances = defaultdict(int)
     for ann in coco_data['annotations']:
-        total_instances[category_id_to_name.get(ann['category_id'], 'unknown')] += 1
+        total_instances[category_id_to_name.get(ann['category_id'])] += 1
 
     print("Total instances in each class:")
     for category, count in total_instances.items():
@@ -43,14 +43,17 @@ def filter_and_select_images(input_json, output_json,categories, min_max_images=
                 selected_images.append((image, rating))
             else :
                 unselected_images.append((image, rating))
-    # Sort images by rating in descending order
-    unselected_images.sort(key=lambda x: x[1], reverse=True)
-    selected_images.sort(key=lambda x: x[1], reverse=True)  
-
+                
+    # Sort images based on rating and write to file
     with open("image_ratings.txt", "w") as rating_file:
         rating_file.write("Ratings of selected images (sorted):\n")
         for image, rating in selected_images:
             rating_file.write(f"Image ID: {image['id']}, Rating: {rating}%\n")
+
+    with open("image_unratings.txt", "w") as unrating_file:
+        unrating_file.write("Ratings of selected images (sorted):\n")
+        for image, rating in unselected_images:
+            unrating_file.write(f"Image ID: {image['id']}, Rating: {rating}%\n")
 
     # Criteria 2: Ensure total instances of each class >= 50% of total instances in annotation file
     def count_instances(images):
@@ -72,24 +75,28 @@ def filter_and_select_images(input_json, output_json,categories, min_max_images=
     instance_count = count_instances(filtered_images)
     for image, rating in selected_images:
         if len(filtered_images) >= 50000:
+            print("Maximum number of images reached")
             break
         filtered_images.append((image, rating))
         instance_count = count_instances(filtered_images)
         if meets_criteria(instance_count):
+            print("Criteria 2 met")
             break
     
     # Add more images if criteria 2 is not met
-    if len(filtered_images) < min_max_images[0] or not meets_criteria(instance_count):
+    if len(filtered_images) < 25000 or not meets_criteria(instance_count):
         for image, rating in unselected_images:
-            if len(filtered_images) >= min_max_images[1]:
+            if len(filtered_images) >= 25000 and meets_criteria(instance_count):
+                print("Min number of images reached when adding unselected images")
                 break
             filtered_images.append((image, rating))
             instance_count = count_instances(filtered_images)
-            if meets_criteria(instance_count):
+            if len(filtered_images) < 50000:
+                print("Criteria 2 not met")
                 break
 
     # Ensure at least the minimum number of images is selected
-    while len(filtered_images) < min_max_images[0] and unselected_images:
+    while len(filtered_images) < 25000 and unselected_images:
         image, rating = unselected_images.pop(0)
         filtered_images.append((image, rating))
 
@@ -103,8 +110,17 @@ def filter_and_select_images(input_json, output_json,categories, min_max_images=
         'licenses': coco_data.get('licenses', []),
         'images': final_images,
         'annotations': new_annotations,
-        'categories': [cat for cat in coco_data['categories'] if cat['name'] in categories] + [{'id': unknown_category_id, 'name': 'unknown'}]
+        'categories': [{'id': category_name_to_id[cat], 'name': cat} for cat in categories if cat in category_name_to_id]
         }
+    
+    # Count the total instances in each class after filtering
+    new_total_instances = defaultdict(int)
+    for ann in new_coco_data['annotations']:
+        new_total_instances[category_id_to_name.get(ann['category_id'])] += 1
+
+    print("Total instances in each class:")
+    for category, count in new_total_instances.items():
+        print(f"Category: {category}, Count: {count}")
 
     # Write the new JSON data to the output file
     with open(output_json, 'w') as f:
