@@ -43,6 +43,10 @@ def filter_and_select_images(input_json, output_json,categories, min_max_images=
                 selected_images.append((image, rating))
             else :
                 unselected_images.append((image, rating))
+
+    # Sort images by rating in descending order
+    selected_images.sort(key=lambda x: x[1], reverse=True)
+    unselected_images.sort(key=lambda x: x[1], reverse=True)
                 
     # Sort images based on rating and write to file
     with open("image_ratings.txt", "w") as rating_file:
