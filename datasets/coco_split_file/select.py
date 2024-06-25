@@ -35,11 +35,22 @@ def filter_and_select_images(input_json, output_json,categories, min_max_images=
         return rating
 
     selected_images = []
+    unselected_images = []
     for image in coco_data['images']:
         if image['id'] in image_annotations:
             rating = calculate_rating(image_annotations[image['id']])
             if rating >= 80:  # Rating >= 20% of specified categories
                 selected_images.append((image, rating))
+            else :
+                unselected_images.append((image, rating))
+    # Sort images by rating in descending order
+    unselected_images.sort(key=lambda x: x[1], reverse=True)
+    selected_images.sort(key=lambda x: x[1], reverse=True)  
+
+    with open("image_ratings.txt", "w") as rating_file:
+        rating_file.write("Ratings of selected images (sorted):\n")
+        for image, rating in selected_images:
+            rating_file.write(f"Image ID: {image['id']}, Rating: {rating}%\n")
 
     # Criteria 2: Ensure total instances of each class >= 50% of total instances in annotation file
     def count_instances(images):
@@ -55,12 +66,7 @@ def filter_and_select_images(input_json, output_json,categories, min_max_images=
                 return False
         return True
 
-    selected_images.sort(key=lambda x: x[1], reverse=True)  # Sort images by rating in descending order
-    with open("image_ratings.txt", "w") as rating_file:
-        rating_file.write("Ratings of selected images (sorted):\n")
-        for image, rating in selected_images:
-            rating_file.write(f"Image ID: {image['id']}, Rating: {rating}%\n")
-            print(f"Image ID: {image['id']}, Rating: {rating}%")
+    
 
     filtered_images = []
     instance_count = count_instances(filtered_images)
@@ -73,15 +79,19 @@ def filter_and_select_images(input_json, output_json,categories, min_max_images=
             break
     
     # Add more images if criteria 2 is not met
-    if not meets_criteria(instance_count):
-        for image, rating in selected_images:
-            if len(filtered_images) >= 50000:
+    if len(filtered_images) < min_max_images[0] or not meets_criteria(instance_count):
+        for image, rating in unselected_images:
+            if len(filtered_images) >= min_max_images[1]:
                 break
-            if (image, rating) not in filtered_images:
-                filtered_images.append((image, rating))
-                instance_count = count_instances(filtered_images)
-                if meets_criteria(instance_count):
-                    break
+            filtered_images.append((image, rating))
+            instance_count = count_instances(filtered_images)
+            if meets_criteria(instance_count):
+                break
+
+    # Ensure at least the minimum number of images is selected
+    while len(filtered_images) < min_max_images[0] and unselected_images:
+        image, rating = unselected_images.pop(0)
+        filtered_images.append((image, rating))
 
     # Prepare the new dataset
     final_images = [img for img, _ in filtered_images]
@@ -93,7 +103,7 @@ def filter_and_select_images(input_json, output_json,categories, min_max_images=
         'licenses': coco_data.get('licenses', []),
         'images': final_images,
         'annotations': new_annotations,
-        'categories': coco_data['categories']
+        'categories': [cat for cat in coco_data['categories'] if cat['name'] in categories] + [{'id': unknown_category_id, 'name': 'unknown'}]
         }
 
     # Write the new JSON data to the output file
