@@ -2,130 +2,103 @@ import json
 import argparse
 from collections import defaultdict
 
-def filter_and_select_images(input_json, output_json,categories, min_max_images= [20000, 50000]):
+def process_coco_annotations_task1(input_json, output_json, min_images, max_images, class_set_1):
+    # Load the COCO annotation file
     with open(input_json, 'r') as f:
         coco_data = json.load(f)
 
-    # Create a mapping from category id to category name and vice versa
-    category_name_to_id = {cat['name']: cat['id'] for cat in coco_data['categories']}
-    category_id_to_name = {cat['id']: cat['name'] for cat in coco_data['categories']}
-    unknown_category_id = max(category_name_to_id.values())
+    # Create dictionaries for category mapping and counting instances
+    category_mapping = {cat['id']: cat['name'] for cat in coco_data['categories']}
+    class_set_1_ids = {cat_id for cat_id, cat_name in category_mapping.items() if cat_name in class_set_1}
 
-    # Filter out category IDs based on the provided category names
-    selected_category_ids = set(category_name_to_id[cat] for cat in categories if cat in category_name_to_id)
-
-    # Initialize counters for total instances in each class
-    total_instances = defaultdict(int)
-    for ann in coco_data['annotations']:
-        total_instances[category_id_to_name.get(ann['category_id'])] += 1
-
-    print("Total instances in each class:")
-    for category, count in total_instances.items():
-        print(f"Category: {category}, Count: {count}")
-
-    # Criteria 1: Filter images based on the percentage of 'unknown' instances
+    # Initialize counters and image ratings
+    image_ratings = defaultdict(lambda: {'class_set_1_count': 0, 'total_count': 0})
+    class_set_1_total_instances = defaultdict(int)
     image_annotations = defaultdict(list)
-    for ann in coco_data['annotations']:
-        image_annotations[ann['image_id']].append(ann)
 
-    def calculate_rating(annotations):
-        total_instances = len(annotations)
-        unknown_instances = sum(1 for ann in annotations if ann['category_id'] == unknown_category_id)
-        rating = (1 - unknown_instances / total_instances) * 100
-        return rating
+    # Count instances per image and prepare image annotations
+    for annotation in coco_data['annotations']:
+        image_id = annotation['image_id']
+        category_id = annotation['category_id']
+        if category_id in class_set_1_ids:
+            image_ratings[image_id]['class_set_1_count'] += 1
+            class_set_1_total_instances[category_id] += 1
+        image_ratings[image_id]['total_count'] += 1
+        image_annotations[image_id].append(annotation)
 
-    selected_images = []
-    unselected_images = []
-    for image in coco_data['images']:
-        if image['id'] in image_annotations:
-            rating = calculate_rating(image_annotations[image['id']])
-            if rating >= 80:  # Rating >= 20% of specified categories
-                selected_images.append((image, rating))
-            else :
-                unselected_images.append((image, rating))
+    # Calculate rating for each image
+    for counts in image_ratings.values():
+        counts['rating'] = counts['class_set_1_count'] / counts['total_count'] if counts['total_count'] > 0 else 0
 
-    # Sort images by rating in descending order
-    selected_images.sort(key=lambda x: x[1], reverse=True)
-    unselected_images.sort(key=lambda x: x[1], reverse=True)
-                
-    # Sort images based on rating and write to file
-    with open("image_ratings.txt", "w") as rating_file:
-        rating_file.write("Ratings of selected images (sorted):\n")
-        for image, rating in selected_images:
-            rating_file.write(f"Image ID: {image['id']}, Rating: {rating}%\n")
+    # Sort images based on rating
+    sorted_images = sorted(image_ratings.items(), key=lambda x: (x[1]['rating'], x[1]['class_set_1_count']), reverse=True)
 
-    with open("image_unratings.txt", "w") as unrating_file:
-        unrating_file.write("Ratings of selected images (sorted):\n")
-        for image, rating in unselected_images:
-            unrating_file.write(f"Image ID: {image['id']}, Rating: {rating}%\n")
+    # Select initial set of top images
+    selected_images = sorted_images[:min_images]
 
-    # Criteria 2: Ensure total instances of each class >= 50% of total instances in annotation file
-    def count_instances(images):
-        instance_count = defaultdict(int)
-        for image, _ in images:
-            for ann in image_annotations[image['id']]:
-                instance_count[category_id_to_name.get(ann['category_id'], 'unknown')] += 1
-        return instance_count
+    # Prepare to track the selected instances
+    selected_class_set_1_instances = defaultdict(int)
+    selected_image_ids = set()
 
-    def meets_criteria(instance_count):
-        for category in categories:
-            if instance_count[category] < 0.5 * total_instances[category]:
-                return False
-        return True
+    for image_id, _ in selected_images:
+         selected_image_ids.add(image_id)
 
-    
+    for annotation in coco_data['annotations']:
+        if annotation['image_id'] in selected_image_ids and annotation['category_id'] in class_set_1_ids:
+            selected_class_set_1_instances[annotation['category_id']] += 1
 
-    filtered_images = []
-    instance_count = count_instances(filtered_images)
-    for image, rating in selected_images:
-        if len(filtered_images) >= 50000:
-            print("Maximum number of images reached")
+    # Ensure at least 50% instances for each category in class_set_1
+    for category_id, total_instances in class_set_1_total_instances.items():
+        print(len(selected_image_ids))
+        required_instances = total_instances * 0.3
+        if selected_class_set_1_instances[category_id] < required_instances or len(selected_image_ids) < max_images:
+            # iterations= 0
+            for image_id, counts in sorted_images:
+                # iterations+=1
+                # if iterations%1000 == 0:
+                    # print(f"Pass {iterations} images")
+                if image_id not in selected_image_ids and counts['class_set_1_count'] > 0:
+                    category_instances_added = sum(1 for annotation in image_annotations[image_id] if annotation['category_id'] == category_id)
+                    if category_instances_added > 0:
+                        selected_image_ids.add(image_id)
+                        # selected_images.append((image_id, counts))
+                        selected_class_set_1_instances[category_id] += category_instances_added
+                        if selected_class_set_1_instances[category_id] >= required_instances:
+                            break
+
+    # Add to enough images to reach the maximum number of images
+    """
+        for image_id, counts in sorted_images:
+        if len(selected_image_ids) >= max_images:
+            print("Max images reached: ", len(selected_image_ids))
             break
-        filtered_images.append((image, rating))
-        instance_count = count_instances(filtered_images)
-        if meets_criteria(instance_count):
-            print("Criteria 2 met")
-            break
+        if image_id not in selected_image_ids:
+            selected_image_ids.add(image_id)
+    """        
+    # Prepare output and statistics
+    output_image_list = [image['file_name'] for image in coco_data['images'] if image['id'] in selected_image_ids]
+
+    # Print statistics
+    print("Category-wise Statistics:")
+    total_selected_class_set_1_instances = sum(selected_class_set_1_instances.values())
+    total_class_set_1_instances = sum(class_set_1_total_instances.values())
+    total_selected_instances = sum(image_ratings[image_id]['total_count'] for image_id in selected_image_ids)
     
-    # Add more images if criteria 2 is not met
-    if len(filtered_images) < 25000 or not meets_criteria(instance_count):
-        for image, rating in unselected_images:
-            if len(filtered_images) >= 25000 and meets_criteria(instance_count):
-                print("Min number of images reached when adding unselected images")
-                break
-            filtered_images.append((image, rating))
-            instance_count = count_instances(filtered_images)
-            if len(filtered_images) < 50000:
-                print("Criteria 2 not met")
-                break
-
-    # Ensure at least the minimum number of images is selected
-    while len(filtered_images) < 25000 and unselected_images:
-        image, rating = unselected_images.pop(0)
-        filtered_images.append((image, rating))
-
-    # Prepare the new dataset
-    final_images = [img for img, _ in filtered_images]
-    final_image_ids = {img['id'] for img in final_images}
-    new_annotations = [ann for ann in coco_data['annotations'] if ann['image_id'] in final_image_ids]
-
-    new_coco_data = {
-        'info': coco_data.get('info', {}),
-        'licenses': coco_data.get('licenses', []),
-        'images': final_images,
-        'annotations': new_annotations,
-        'categories': [{'id': category_name_to_id[cat], 'name': cat} for cat in categories if cat in category_name_to_id]
-        }
+    for category_id, total_instances in class_set_1_total_instances.items():
+        selected_instances = selected_class_set_1_instances[category_id]
+        category_name = category_mapping[category_id]
+        percentage = (selected_instances / total_instances) * 100 if total_instances > 0 else 0
+        print(f"{category_name}: {selected_instances} / {total_instances} ({percentage:.2f}%)")
     
-    # Count the total instances in each class after filtering
-    new_total_instances = defaultdict(int)
-    for ann in new_coco_data['annotations']:
-        new_total_instances[category_id_to_name.get(ann['category_id'])] += 1
+    percentage_chosen_class_set_1 = (total_selected_class_set_1_instances / total_class_set_1_instances) * 100 if total_class_set_1_instances > 0 else 0
+    percentage_total_instances = (total_selected_class_set_1_instances / total_selected_instances) * 100 if total_selected_instances > 0 else 0
 
-    print("Total instances in each class:")
-    for category, count in new_total_instances.items():
-        print(f"Category: {category}, Count: {count}")
+    print(f"Percentage of total instances of class_set_1 chosen: {percentage_chosen_class_set_1:.2f}%")
+    print(f"Percentage of total instances in the selected images list: {percentage_total_instances:.2f}%")
 
-    # Write the new JSON data to the output file
+    # Save output to JSON file
     with open(output_json, 'w') as f:
-        json.dump(new_coco_data, f, indent=4)
+        json.dump(output_image_list, f, indent=4)
+
+    return output_image_list
+
