@@ -45,4 +45,5 @@ Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
 # ins.total_images_check(destination_path+spliting_file_name[1],destination_file_path=destination_path, classes=Class[1].append("unknown"), file_name='T2_total_images.csv')
 # ins.count_annotation(destination_path+spliting_file_name[1], destination_file_path =destination_path, file_name='T2_annotation.csv')
 
-slt.process_coco_annotations_task1(annotation_path,destination_path+'image_list_task1.json', min_images_required, max_images_required, T1_COCO_CLASS_NAMES)
+# slt.process_coco_annotations_task1(annotation_path,destination_path+'image_list_task1.json', min_images_required, max_images_required, T1_COCO_CLASS_NAMES)
+slt.process_coco_annotations_task2(annotation_path,destination_path+'image_list_task2.json', min_images_required, max_images_required, T2_CLASS_NAMES, T1_COCO_CLASS_NAMES, destination_path+'image_list_task1.json')
