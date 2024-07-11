@@ -4,18 +4,8 @@ from pycocotools.coco import COCO
 import csv
 
 # All utilities to check the validation of the split file
-
-T1_COCO_CLASS_NAMES = [
-    "airplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat",
-    "chair", "cow", "dining table", "dog", "horse", "motorcycle", "person",
-    "potted plant", "sheep", "couch", "train", "tv"
-]
-
-
-annotation_file = './annotations/instances_train2017.json'
-dest_file ='./'
-
 # Load the COCO annotations file
+
 def count_annotation(annotation_file, destination_file_path ='./' ,file_name='filename.csv'):
     print("Running count_annotation function")
     coco = COCO(annotation_file)
@@ -122,6 +112,4 @@ def count_total_images_in_coco(input_json):
 
 # Example
 
-# count_categories('../json_coco_file/T1_instances_train2017_split.json')
-# count_annotation(annotation_file, dest_file, 'category_bruh.csv')
-# total_images_check(annotation_file, dest_file, T1_COCO_CLASS_NAMES, 'total_images.csv')
+

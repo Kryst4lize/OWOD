@@ -87,6 +87,8 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
     output_image_list = [image['file_name'] for image in coco_data['images'] if image['id'] in selected_image_ids]
 
     # Print statistics
+    """
+    
     print("Category-wise Statistics:")
     total_selected_class_set_1_instances = sum(selected_class_set_1_instances.values())
     total_class_set_1_instances = sum(class_set_1_total_instances.values())
@@ -104,6 +106,7 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
     print(f"Percentage of total instances of class_set chosen: {percentage_chosen_class_set_1:.2f}%")
     print(f"Percentage of total instances in the selected images list: {percentage_total_instances:.2f}%")
 
+    """
     # Save output to JSON file
     with open(output_json, 'w') as f:
         json.dump(output_image_list, f, indent=4)
