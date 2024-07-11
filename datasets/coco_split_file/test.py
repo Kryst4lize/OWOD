@@ -28,15 +28,25 @@ T4_CLASS_NAMES = [
     "wine glass", "cup", "fork", "knife", "spoon", "bowl"
 ]
 
-min_images_required = 26000
-max_images_required = 30000
+min_images_required = 20000
+max_images_required = 20000
 annotation_path =    '../annotations/instances_train2017.json'
 destination_path =   '../json_coco_file/'
 spliting_file_name = ["T1_instances_train2017_split.json","T2_instances_train2017_split.json","T3_instances_train2017_split.json","T4_instances_train2017_split.json"]
 Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
-
-# ALl unspecified categories will change to 'unknown', and the min and max number of images will be [20000,50000] in default
-# If you want to mask all the categories, leave the Class empty
+Image_list = [destination_path+'image_list_blank.json', 
+              destination_path+'image_list_task1.json',
+              destination_path+'image_list_task2.json',
+              destination_path+'image_list_task3.json',
+              destination_path+'image_list_task4.json']
+"""
+slt.process_coco_annotations_task(annotation_path,Image_list[1], 35000, 35000, Class[0], Image_list[0])
+slt.process_coco_annotations_task(annotation_path,Image_list[2], min_images_required, max_images_required, Class[1], Image_list[1])
+slt.process_coco_annotations_task(annotation_path,Image_list[3], min_images_required, max_images_required, Class[2], Image_list[2])
+slt.process_coco_annotations_task(annotation_path,Image_list[4], min_images_required, max_images_required, Class[3], Image_list[3])
+"""
+slt.get_unique_images(annotation_path, Image_list, destination_path+'image_list_task0.json')
+# All comment below are for testing, validate and give an example of how to use the function
 
 # mk.masking_json(annotation_path, destination_path+spliting_file_name[1], Class[1], num_images= 3000) 
 # slt.filter_and_select_images(destination_path+spliting_file_name[1], '../json_coco_file/T2_instances_train2017_split_revised.json', [20000, 50000], Class[1])
@@ -44,6 +54,4 @@ Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
 # ins.count_categories('../json_coco_file/T2_instances_train2017_split.json')
 # ins.total_images_check(destination_path+spliting_file_name[1],destination_file_path=destination_path, classes=Class[1].append("unknown"), file_name='T2_total_images.csv')
 # ins.count_annotation(destination_path+spliting_file_name[1], destination_file_path =destination_path, file_name='T2_annotation.csv')
-
-# slt.process_coco_annotations_task1(annotation_path,destination_path+'image_list_task1.json', min_images_required, max_images_required, T1_COCO_CLASS_NAMES)
-slt.process_coco_annotations_task2(annotation_path,destination_path+'image_list_task2.json', min_images_required, max_images_required, T2_CLASS_NAMES, T1_COCO_CLASS_NAMES, destination_path+'image_list_task1.json')
+# slt.process_coco_annotations_task(annotation_path,destination_path+'image_list_task1.json', min_images_required, max_images_required, T1_COCO_CLASS_NAMES)

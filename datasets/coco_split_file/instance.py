@@ -108,6 +108,18 @@ def count_categories(annotation_path):
         print(f"Category: {category_name}, Count: {count}")
     print("Total categories:", len(category_count))
 
+def count_total_images_in_coco(input_json):
+    # Load the COCO annotation file
+    with open(input_json, 'r') as f:
+        coco_data = json.load(f)
+    
+    # Calculate the total number of images
+    total_images = len(coco_data['images'])
+    
+    print(f"Total number of images in the COCO dataset: {total_images}")
+    
+    return total_images
+
 # Example
 
 # count_categories('../json_coco_file/T1_instances_train2017_split.json')
