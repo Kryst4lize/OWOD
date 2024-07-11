@@ -1,7 +1,90 @@
-# All function in this file only using for experiment on for spliting the dataset, not for the final version. It also have testing and printing function for the experiment.
+# All function in this file only using for experiment on for spliting the dataset, not for the final version. 
+# It also have testing and printing function for the experiment only
+# The final version will be in the select.py file
 
 import json
 from collections import defaultdict
+
+# All utitlities to split the COCO dataset
+#Not include unspecified classes
+
+def filter_annotations(annotation_path, destination_path, include_classes):
+    # Load the original JSON file
+    with open(annotation_path, 'r') as f:
+        data = json.load(f)
+
+    # Get the category IDs for the specified classes
+    category_ids = {category['id']: category for category in data['categories'] if category['name'] in include_classes}
+    filtered_annotations = [anno for anno in data['annotations'] if anno['category_id'] in category_ids]
+    image_ids = {anno['image_id'] for anno in filtered_annotations}
+    filtered_images = [img for img in data['images'] if img['id'] in image_ids]
+    filtered_categories = [category for category_id, category in category_ids.items()]
+
+    filtered_data = {
+        'info': data.get('info', {}),
+        'licenses': data.get('licenses', []),
+        'images': filtered_images,
+        'annotations': filtered_annotations,
+        'categories': filtered_categories
+    }
+
+    # Save the filtered data to a new JSON file
+    with open(destination_path, 'w') as f:
+        json.dump(filtered_data, f, indent=4)
+
+    print(f'Filtered JSON file created successfully at {destination_path}')
+
+# Including specified classes 
+def filter_annotations_nonstrict(annotation_path, destination_path, categories):
+    # Load the original JSON file
+    with open(annotation_path, 'r') as f:
+        data = json.load(f)
+
+    # Create a mapping from category id to category name
+    category_name_to_id = {cat['name']: cat['id'] for cat in data['categories']}
+    selected_category_ids = set(category_name_to_id[cat] for cat in categories if cat in category_name_to_id)
+
+    new_coco_data = {
+        'info': data.get('info', {}),
+        'licenses': data.get('licenses', []),
+        'images': [],
+        'annotations': [],
+        'categories': data['categories']  # Keep all categories
+    }
+    image_ids = set()
+
+    # Collect image ids that have at least one annotation in the selected categories
+    for ann in data['annotations']:
+        if ann['category_id'] in selected_category_ids:
+            image_ids.add(ann['image_id'])
+
+    # Filter annotations based on collected image ids
+    for ann in data['annotations']:
+        if ann['image_id'] in image_ids:
+            new_coco_data['annotations'].append(ann)
+
+    # Filter images based on collected image ids
+    new_coco_data['images'] = [img for img in data['images'] if img['id'] in image_ids]
+
+    # Write the new JSON data to the output file
+    with open(destination_path, 'w') as f:
+        json.dump(new_coco_data, f, indent=4)
+
+# Usage
+"""
+annotation_path = '../annotations/instances_train2017.json'
+destination_path = '../json_coco_file/'
+spliting_file_name = ["T1_instances_train2017_split.json","T2_instances_train2017_split.json","T3_instances_train2017_split.json","T4_instances_train2017_split.json"]
+Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
+"""
+
+"""
+for i in range(4):
+    # filter_annotations(annotation_path, destination_path + spliting_file_name[i], Class[i])
+
+    # Dung cai nay neu muon filter theo cac class co san trong COCO (ca class chinh va class phu)
+    filter_annotations_nonstrict(annotation_path, destination_path + spliting_file_name[i], Class[i])
+"""
 
 def process_coco_annotations_task1(input_json, output_json, min_images, max_images, class_set_1):
     # Load the COCO annotation file
@@ -188,19 +271,7 @@ def process_coco_annotations_task2(input_json, output_json, min_images, max_imag
                         selected_class_set_1_instances[category_id] += category_instances_added
                         if selected_class_set_1_instances[category_id] >= required_instances:
                             break
-    """
-    for category_id, total_instances in class_set_2_total_instances.items():
-        required_instances = total_instances * 0.3
-        while selected_class_set_2_instances[category_id] < required_instances and len(selected_image_ids) < max_images:
-            for image_id, counts in sorted_images_by_rating_2:
-                if image_id not in task_1_image_ids and image_id not in selected_image_ids and counts['class_set_2_count'] > 0:
-                    category_instances_added = sum(1 for annotation in image_annotations[image_id] if annotation['category_id'] == category_id)
-                    if category_instances_added > 0:
-                        selected_image_ids.add(image_id)
-                        selected_class_set_2_instances[category_id] += category_instances_added
-                        if selected_class_set_2_instances[category_id] >= required_instances:
-                            break
-    """
+  
     # Prepare output and statistics
     output_image_list = [image['file_name'] for image in coco_data['images'] if image['id'] in selected_image_ids]
 
@@ -346,3 +417,62 @@ def process_coco_annotations_task3(input_json, output_json, min_images, max_imag
         json.dump(output_image_list, f, indent=4)
 
     return output_image_list
+
+def masking_json(input_json, output_json, categories, num_images= 15000):
+    with open(input_json, 'r') as f:
+        data = json.load(f)
+
+    # Create a mapping from category id to category name
+    category_name_to_id = {cat['name']: cat['id'] for cat in data['categories']}
+    category_id_to_name = {cat['id']: cat['name'] for cat in data['categories']}
+
+    # Filter out category IDs based on the provided category names
+    selected_category_ids = set(category_name_to_id[cat] for cat in categories if cat in category_name_to_id)
+
+    unknown_category_id = max(category_name_to_id.values()) + 1
+    new_categories = [{'id': category_name_to_id[cat], 'name': cat} for cat in categories if cat in category_name_to_id]
+    new_categories.append({'id': unknown_category_id, 'name': 'unknown'})
+
+    new_coco_dataset = {
+        'info': data.get('info', {}),
+        'licenses': data.get('licenses', []),
+        'images': [],
+        'annotations': [],
+        'categories': new_categories  # Add 'unknown' category
+    }
+
+    # Track image ids that should be included
+    image_ids = set()
+
+    # Collect image ids that have at least one annotation in the selected categories
+    for ann in data['annotations']:
+        if ann['category_id'] in selected_category_ids:
+            image_ids.add(ann['image_id'])
+
+    # Filter annotations based on collected image ids and change unspecified categories to 'unknown'
+    for ann in data['annotations']:
+        if ann['image_id'] in image_ids:
+            if ann['category_id'] not in selected_category_ids:
+                ann['category_id'] = unknown_category_id
+            new_coco_dataset['annotations'].append(ann)
+
+    # Filter images based on collected image ids
+    new_coco_dataset['images'] = [img for img in data['images'] if img['id'] in image_ids]
+
+    # Write the new JSON data to the output file
+    with open(output_json, 'w') as f:
+        json.dump(new_coco_dataset, f, indent=4)
+        
+"""
+    for category_id, total_instances in class_set_2_total_instances.items():
+        required_instances = total_instances * 0.3
+        while selected_class_set_2_instances[category_id] < required_instances and len(selected_image_ids) < max_images:
+            for image_id, counts in sorted_images_by_rating_2:
+                if image_id not in task_1_image_ids and image_id not in selected_image_ids and counts['class_set_2_count'] > 0:
+                    category_instances_added = sum(1 for annotation in image_annotations[image_id] if annotation['category_id'] == category_id)
+                    if category_instances_added > 0:
+                        selected_image_ids.add(image_id)
+                        selected_class_set_2_instances[category_id] += category_instances_added
+                        if selected_class_set_2_instances[category_id] >= required_instances:
+                            break
+"""

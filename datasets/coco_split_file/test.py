@@ -39,13 +39,23 @@ Image_list = [destination_path+'image_list_blank.json',
               destination_path+'image_list_task2.json',
               destination_path+'image_list_task3.json',
               destination_path+'image_list_task4.json']
-"""
+# Split the original COCO annotations file into 5 different task (only list of images)
+
 slt.process_coco_annotations_task(annotation_path,Image_list[1], 35000, 35000, Class[0], Image_list[0])
 slt.process_coco_annotations_task(annotation_path,Image_list[2], min_images_required, max_images_required, Class[1], Image_list[1])
 slt.process_coco_annotations_task(annotation_path,Image_list[3], min_images_required, max_images_required, Class[2], Image_list[2])
 slt.process_coco_annotations_task(annotation_path,Image_list[4], min_images_required, max_images_required, Class[3], Image_list[3])
-"""
 slt.get_unique_images(annotation_path, Image_list, destination_path+'image_list_task0.json')
+
+# Split coco files 
+mk.process_coco_annotations_task(annotation_path,destination_path+'T1_instances_train2017_split.json', Image_list[1], Class[0])
+mk.process_coco_annotations_task(annotation_path,destination_path+'T2_instances_train2017_split.json', Image_list[2], Class[1])
+mk.process_coco_annotations_task(annotation_path,destination_path+'T3_instances_train2017_split.json', Image_list[3], Class[2])
+mk.process_coco_annotations_task(annotation_path,destination_path+'T4_instances_train2017_split.json', Image_list[4], Class[3])
+mk.process_coco_annotations_unknown(annotation_path,destination_path+'T0_instances_train2017_split.json',destination_path+'image_list_task0.json')
+
+
+
 # All comment below are for testing, validate and give an example of how to use the function
 
 # mk.masking_json(annotation_path, destination_path+spliting_file_name[1], Class[1], num_images= 3000) 

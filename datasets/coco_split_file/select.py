@@ -2,7 +2,7 @@ import json
 from collections import defaultdict
 
 # If you want to print the statistics of the quality of the selected images, you can check process_coco_annotations_task3 function in experiment.py
-def process_coco_annotations_task(input_json, output_json, min_images, max_images, class_set_1, list_json):
+def process_coco_annotations_task(input_json, output_json, min_images, max_images, class_set, list_json):
     # Load the COCO annotation file
     with open(input_json, 'r') as f:
         coco_data = json.load(f)
@@ -14,10 +14,10 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
 
     # Create dictionaries for category mapping and counting instances
     category_mapping = {cat['id']: cat['name'] for cat in coco_data['categories']}
-    class_set_1_ids = {cat_id for cat_id, cat_name in category_mapping.items() if cat_name in class_set_1}
+    class_set_1_ids = {cat_id for cat_id, cat_name in category_mapping.items() if cat_name in class_set}
 
     # Initialize counters and image ratings
-    image_ratings = defaultdict(lambda: {'class_set_1_count': 0, 'total_count': 0})
+    image_ratings = defaultdict(lambda: {'class_set_count': 0, 'total_count': 0})
     class_set_1_total_instances = defaultdict(int)
     image_annotations = defaultdict(list)
 
@@ -26,17 +26,17 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
         image_id = annotation['image_id']
         category_id = annotation['category_id']
         if category_id in class_set_1_ids:
-            image_ratings[image_id]['class_set_1_count'] += 1
+            image_ratings[image_id]['class_set_count'] += 1
             class_set_1_total_instances[category_id] += 1
         image_ratings[image_id]['total_count'] += 1
         image_annotations[image_id].append(annotation)
 
     # Calculate Rating 1 for each image
     for counts in image_ratings.values():
-        counts['rating_1'] = counts['class_set_1_count'] / counts['total_count'] if counts['total_count'] > 0 else 0
+        counts['rating_1'] = counts['class_set_count'] / counts['total_count'] if counts['total_count'] > 0 else 0
 
     # Sort images based on Rating 1
-    sorted_images_by_rating_1 = sorted(image_ratings.items(), key=lambda x: (x[1]['rating_1'], x[1]['class_set_1_count']), reverse=True)
+    sorted_images_by_rating_1 = sorted(image_ratings.items(), key=lambda x: (x[1]['rating_1'], x[1]['class_set_count']), reverse=True)
 
     # Select initial set of top images based on Rating 1
     selected_images = []
@@ -62,12 +62,12 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
             if annotation['category_id'] in class_set_1_ids:
                 selected_class_set_1_instances[annotation['category_id']] += 1
 
-    # Ensure minimum percentage of instances for each category in class_set_1
+    # Ensure minimum percentage of instances for each category in class_set
     for category_id, total_instances in class_set_1_total_instances.items():
         required_instances = total_instances * 0.3
         while selected_class_set_1_instances[category_id] < required_instances and len(selected_image_ids) < max_images:
             for image_id, counts in sorted_images_by_rating_1:
-                if image_id not in task_1_image_ids and image_id not in selected_image_ids and counts['class_set_1_count'] > 0:
+                if image_id not in task_1_image_ids and image_id not in selected_image_ids and counts['class_set_count'] > 0:
                     category_instances_added = sum(1 for annotation in image_annotations[image_id] if annotation['category_id'] == category_id)
                     if category_instances_added > 0:
                         selected_image_ids.add(image_id)
@@ -101,7 +101,7 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
     percentage_chosen_class_set_1 = (total_selected_class_set_1_instances / total_class_set_1_instances) * 100 if total_class_set_1_instances > 0 else 0
     percentage_total_instances = (total_selected_class_set_1_instances / total_selected_instances) * 100 if total_selected_instances > 0 else 0
 
-    print(f"Percentage of total instances of class_set_1 chosen: {percentage_chosen_class_set_1:.2f}%")
+    print(f"Percentage of total instances of class_set chosen: {percentage_chosen_class_set_1:.2f}%")
     print(f"Percentage of total instances in the selected images list: {percentage_total_instances:.2f}%")
 
     # Save output to JSON file
@@ -110,9 +110,9 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
 
     return output_image_list
 
-def get_unique_images(coco_json_path, json_files, output_json_path):
+def get_unique_images(input_json ,output_json, list_json):
     # Read the COCO JSON file and extract the image file names
-    with open(coco_json_path, 'r') as f:
+    with open(input_json , 'r') as f:
         coco_data = json.load(f)
     
     # Extract image file names from COCO JSON
@@ -120,7 +120,7 @@ def get_unique_images(coco_json_path, json_files, output_json_path):
     
     # Load images from the other JSON files
     images_in_other_jsons = set()
-    for json_file in json_files:
+    for json_file in list_json:
         with open(json_file, 'r') as f:
             images = json.load(f)
             images_in_other_jsons.update(images)
@@ -130,7 +130,7 @@ def get_unique_images(coco_json_path, json_files, output_json_path):
     
     # Convert to list and save to output JSON file
     unique_images_list = list(unique_images)
-    with open(output_json_path, 'w') as f:
+    with open(output_json, 'w') as f:
         json.dump(unique_images_list, f, indent=4)
     
     return unique_images_list
