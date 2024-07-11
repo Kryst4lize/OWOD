@@ -28,8 +28,8 @@ T4_CLASS_NAMES = [
 ]
 min_images_required_task1 = 35000
 max_images_required_task1 = 35000
-min_images_required = 20000
-max_images_required = 20000
+min_images_required = 21000
+max_images_required = 21000
 annotation_path =    '../annotations/instances_train2017.json'
 destination_path =   '../json_coco_file/'
 
@@ -50,7 +50,7 @@ Spliting_file_name =[destination_path+'T0_instances_train2017_split.json',
 
 # Split the original COCO annotations file into 5 different task (only list of images)
 
-slt.process_coco_annotations_task(annotation_path,Image_list[1], 35000, 35000, Class[0], Image_list[0])
+slt.process_coco_annotations_task(annotation_path,Image_list[1], min_images_required_task1, max_images_required_task1, Class[0], Image_list[0])
 slt.process_coco_annotations_task(annotation_path,Image_list[2], min_images_required, max_images_required, Class[1], Image_list[1])
 slt.process_coco_annotations_task(annotation_path,Image_list[3], min_images_required, max_images_required, Class[2], Image_list[2])
 slt.process_coco_annotations_task(annotation_path,Image_list[4], min_images_required, max_images_required, Class[3], Image_list[3])
