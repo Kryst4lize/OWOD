@@ -88,7 +88,7 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
 
     # Print statistics
     
-    
+    """
     print("Category-wise Statistics:")
     total_selected_class_set_1_instances = sum(selected_class_set_1_instances.values())
     total_class_set_1_instances = sum(class_set_1_total_instances.values())
@@ -98,14 +98,14 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
         selected_instances = selected_class_set_1_instances[category_id]
         category_name = category_mapping[category_id]
         percentage = (selected_instances / total_instances) * 100 if total_instances > 0 else 0
-        # print(f"{category_name}: {selected_instances} / {total_instances} ({percentage:.2f}%)")
+        print(f"{category_name}: {selected_instances} / {total_instances} ({percentage:.2f}%)")
 
     percentage_chosen_class_set_1 = (total_selected_class_set_1_instances / total_class_set_1_instances) * 100 if total_class_set_1_instances > 0 else 0
     percentage_total_instances = (total_selected_class_set_1_instances / total_selected_instances) * 100 if total_selected_instances > 0 else 0
 
     print(f"Percentage of total instances of class_set chosen: {percentage_chosen_class_set_1:.2f}%")
     print(f"Percentage of total instances in the selected images list: {percentage_total_instances:.2f}%")
-
+    """
     
     # Save output to JSON file
     with open(output_json, 'w') as f:
