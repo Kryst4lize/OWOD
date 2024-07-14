@@ -4,7 +4,7 @@
 
 import json
 from collections import defaultdict
-
+import random
 # All utitlities to split the COCO dataset
 #Not include unspecified classes
 
@@ -476,3 +476,63 @@ def masking_json(input_json, output_json, categories, num_images= 15000):
                         if selected_class_set_2_instances[category_id] >= required_instances:
                             break
 """
+# Update version including spliting the dataset into two parts and shuffle the images
+def process_coco_annotations_task(input_json, output_json, image_file, class_set):
+    # Load input COCO annotations file
+    with open(input_json, 'r') as f:
+        coco_data = json.load(f)
+    
+    # Load image file
+    with open(image_file, 'r') as f:
+        image_list = json.load(f)
+    
+    # Shuffle the images randomly
+    random.shuffle(image_list)
+    
+    # Split the images into two sets
+    images_1000 = image_list[:1000]
+    images_20000 = image_list[1000:]
+    
+    # Helper function to filter the COCO data
+    def filter_coco_data(image_set, coco_data, class_set):
+        image_ids = {img['id'] for img in image_set}
+        
+        # Filter annotations to only keep those corresponding to the selected images
+        filtered_annotations = [ann for ann in coco_data['annotations'] if ann['image_id'] in image_ids]
+        
+        # Create a set of category IDs for the classes in class_set
+        class_set_lower = {cls.lower() for cls in class_set}
+        filtered_categories = [cat for cat in coco_data['categories'] if cat['name'].lower() in class_set_lower]
+        category_ids = {cat['id'] for cat in filtered_categories}
+        
+        # Filter annotations to only keep those belonging to the specified classes
+        filtered_annotations = [ann for ann in filtered_annotations if ann['category_id'] in category_ids]
+        
+        # Construct the output COCO data structure
+        filtered_coco_data = {
+            'images': list(image_set),
+            'annotations': filtered_annotations,
+            'categories': filtered_categories,
+            'info': coco_data.get('info', {}),
+            'licenses': coco_data.get('licenses', []),
+        }
+        
+        return filtered_coco_data
+    
+    # Convert images to sets for quick lookup
+    image_set_1000 = {img for img in coco_data['images'] if img['file_name'] in images_1000}
+    image_set_20000 = {img for img in coco_data['images'] if img['file_name'] in images_20000}
+    
+    # Filter the COCO data for each set
+    filtered_coco_data_1000 = filter_coco_data(image_set_1000, coco_data, class_set)
+    filtered_coco_data_20000 = filter_coco_data(image_set_20000, coco_data, class_set)
+    
+    # Save the filtered COCO data to the output files
+    output_json_1, output_json_2 = output_json
+    with open(output_json_1, 'w') as f:
+        json.dump(filtered_coco_data_1000, f, indent=4)
+    
+    with open(output_json_2, 'w') as f:
+        json.dump(filtered_coco_data_20000, f, indent=4)
+    
+    return [filtered_coco_data_1000, filtered_coco_data_20000]
