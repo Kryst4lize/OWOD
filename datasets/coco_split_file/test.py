@@ -1,6 +1,5 @@
 import csv
 import masking as mk
-import instance as ins 
 import select as slt
 
 T1_COCO_CLASS_NAMES = [
@@ -59,6 +58,9 @@ Spliting_file_name =[[destination_path+'T0_instances_train2017.json'],
                      [destination_path+'T3_instances_val2017.json',destination_path+'T3_instances_train2017.json'], 
                      [destination_path+'T4_instances_val2017.json',destination_path+'T4_instances_train2017.json']]
 
+# Change id of annotation 
+mk.process_coco_categories(annotation_path_1, annotation_path_1, Class)
+mk.process_coco_categories(annotation_path_2, annotation_path_2, Class)
 # Split the original COCO annotations file into 5 different task (only list of images)
 
 # Train images file
@@ -81,20 +83,16 @@ mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[4][1], Im
 mk.process_coco_annotations_unknown(annotation_path_1, Spliting_file_name[0][0], Image_list_train[5])
 
 # Split coco files val
-mk.process_coco_annotations_task(annotation_path_2, Spliting_file_name[1][0], Image_list_val[1], Class[0])
-mk.process_coco_annotations_task(annotation_path_2, Spliting_file_name[2][0], Image_list_val[2], Class[1])
-mk.process_coco_annotations_task(annotation_path_2, Spliting_file_name[3][0], Image_list_val[3], Class[2])
-mk.process_coco_annotations_task(annotation_path_2, Spliting_file_name[4][0], Image_list_val[4], Class[3])
+mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[1][0], Image_list_val[1], Class[0])
+mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[2][0], Image_list_val[2], Class[1])
+mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[3][0], Image_list_val[3], Class[2])
+mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[4][0], Image_list_val[4], Class[3])
 
 # Compress the file 
 for file_group in Spliting_file_name:
     for file_path in file_group:
         mk.compress_coco_json(file_path)
 
-#Check instance with Pycocotools
-for file_group in Spliting_file_name:
-    for file_path in file_group:
-        ins.count_categories(file_path)
         
 # All comment below are for testing, validate and give an example of how to use the function
 

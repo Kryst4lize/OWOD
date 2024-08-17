@@ -36,8 +36,11 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
         counts['rating_1'] = counts['class_set_count'] / counts['total_count'] if counts['total_count'] > 0 else 0
 
     # Sort images based on Rating 1
-    sorted_images_by_rating_1 = sorted(image_ratings.items(), key=lambda x: (x[1]['rating_1'], x[1]['class_set_count']), reverse=True)
-
+    if 'person' in class_set and min_images < 5000:
+        sorted_images_by_rating_1 = sorted(image_ratings.items(), key=lambda x: (x[1]['rating_1'], x[1]['class_set_count']), reverse=False)
+    else :
+        sorted_images_by_rating_1 = sorted(image_ratings.items(), key=lambda x: (x[1]['rating_1'], x[1]['class_set_count']), reverse=True)
+    
     # Select initial set of top images based on Rating 1
     selected_images = []
     for image_id, counts in sorted_images_by_rating_1:
@@ -75,7 +78,7 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
                         if selected_class_set_1_instances[category_id] >= required_instances:
                             break
 
-    # Add more images if still below max_images
+    # Add more images if still below min_images
     if len(selected_image_ids) < min_images:
         for image_id, counts in sorted_images_by_rating_1:
             if image_id not in task_1_image_ids and image_id not in selected_image_ids:
@@ -88,7 +91,7 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
 
     # Print statistics
     
-    """
+    
     print("Category-wise Statistics:")
     total_selected_class_set_1_instances = sum(selected_class_set_1_instances.values())
     total_class_set_1_instances = sum(class_set_1_total_instances.values())
@@ -105,7 +108,7 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
 
     print(f"Percentage of total instances of class_set chosen: {percentage_chosen_class_set_1:.2f}%")
     print(f"Percentage of total instances in the selected images list: {percentage_total_instances:.2f}%")
-    """
+    
     
     # Save output to JSON file
     with open(output_json, 'w') as f:
