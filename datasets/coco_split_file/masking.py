@@ -8,7 +8,7 @@ def process_coco_categories(input_json, output_json, class_list):
     with open(input_json, 'r') as f:
         coco_data = json.load(f)
 
-    # Flatten the list of class names into a single list, and map them to new IDs
+    # Flatten the list of class names into a single list and map 
     new_category_mapping = {}
     current_id = 0
 
@@ -17,20 +17,23 @@ def process_coco_categories(input_json, output_json, class_list):
             new_category_mapping[category] = current_id
             current_id += 1
 
-    # Update the categories in the COCO file
+    # Reverse Mapping (To trace annotation category id to new category id)
+    old_to_new_category_mapping = {}
+
+    # Update the categories 
     for category in coco_data['categories']:
         category_name = category['name']
         if category_name in new_category_mapping:
+            old_to_new_category_mapping[category['id']] = new_category_mapping[category_name]
             category['id'] = new_category_mapping[category_name]
 
     # Update the category ids in the annotations
     for annotation in coco_data['annotations']:
         old_category_id = annotation['category_id']
-        category_name = next((cat['name'] for cat in coco_data['categories'] if cat['id'] == old_category_id), None)
-        if category_name and category_name in new_category_mapping:
-            annotation['category_id'] = new_category_mapping[category_name]
+        # Map the old category to the new one
+        if old_category_id in old_to_new_category_mapping:
+            annotation['category_id'] = old_to_new_category_mapping[old_category_id]
 
-    # Save the modified COCO file
     with open(output_json, 'w') as f:
         json.dump(coco_data, f)
 
@@ -54,13 +57,19 @@ def process_coco_annotations_task(input_json, output_json, image_file, class_set
     filtered_annotations = [ann for ann in coco_data['annotations'] if ann['image_id'] in image_ids]
     
     # Create a set of category IDs for the classes in class_set
+    
+    
     class_set_lower = {cls.lower() for cls in class_set}
     filtered_categories = [cat for cat in coco_data['categories'] if cat['name'].lower() in class_set_lower]
+    
+    
     category_ids = {cat['id'] for cat in filtered_categories}
     
     # Filter annotations to only keep those belonging to the specified classes
     filtered_annotations = [ann for ann in filtered_annotations if ann['category_id'] in category_ids]
-    
+
+    # TODO: Not remove all categories id in COCO. Instead, keep it 
+    filtered_categories = [cat for cat in coco_data['categories']]    
     # Construct the output COCO data structure
     filtered_coco_data = {
         'images': filtered_images,
@@ -95,6 +104,7 @@ def process_coco_annotations_task_val(input_json, output_json, image_file, class
     # Filter annotations to only keep those corresponding to the selected images
     filtered_annotations = [ann for ann in coco_data['annotations'] if ann['image_id'] in image_ids]
     
+    
     # Create a set of category IDs for the classes in class_set
     class_set_lower = {cls.lower() for cls in class_set}
     filtered_categories = [cat for cat in coco_data['categories'] if cat['name'].lower() in class_set_lower]
@@ -118,6 +128,14 @@ def process_coco_annotations_task_val(input_json, output_json, image_file, class
         if ann['category_id'] not in category_ids:
             ann['category_id'] = unknown_category_id
     
+    # TODO: Not remove all categories. Instead, keep it 
+    filtered_categories = [cat for cat in coco_data['categories']]
+    unknown_category_id = max(cat['id'] for cat in coco_data['categories']) + 1
+    filtered_categories.append({
+        'id': unknown_category_id,
+        'name': 'unknown',
+        'supercategory': 'unknown'
+    })
     # Construct the output COCO data structure
     filtered_coco_data = {
         'images': filtered_images,

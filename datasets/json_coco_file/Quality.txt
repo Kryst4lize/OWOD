@@ -95,28 +95,28 @@ Percentage of total instances of class_set chosen: 64.38%
 Percentage of total instances in the selected images list: 69.48%
 
 Category-wise Statistics Val task 1
-dog: 77 / 218 (35.32%)
-potted plant: 90 / 343 (26.24%)
-tv: 29 / 288 (10.07%)
-bird: 338 / 440 (76.82%)
-cat: 71 / 202 (35.15%)
-horse: 237 / 273 (86.81%)
-sheep: 343 / 361 (95.01%)
-cow: 343 / 380 (90.26%)
-bottle: 132 / 1025 (12.88%)
-couch: 39 / 261 (14.94%)
-chair: 445 / 1791 (24.85%)
-dining table: 56 / 697 (8.03%)
-bicycle: 149 / 316 (47.15%)
-car: 677 / 1932 (35.04%)
-motorcycle: 278 / 371 (74.93%)
-airplane: 101 / 143 (70.63%)
-bus: 150 / 285 (52.63%)
-train: 122 / 190 (64.21%)
-boat: 326 / 430 (75.81%)
-person: 2949 / 11004 (26.80%)
-Percentage of total instances of class_set chosen: 33.18%
-Percentage of total instances in the selected images list: 95.96%
+dog: 73 / 218 (33.49%)
+potted plant: 127 / 343 (37.03%)
+tv: 77 / 288 (26.74%)
+bird: 71 / 440 (16.14%)
+cat: 38 / 202 (18.81%)
+horse: 20 / 273 (7.33%)
+sheep: 12 / 361 (3.32%)
+cow: 33 / 380 (8.68%)
+bottle: 350 / 1025 (34.15%)
+couch: 96 / 261 (36.78%)
+chair: 656 / 1791 (36.63%)
+dining table: 181 / 697 (25.97%)
+bicycle: 119 / 316 (37.66%)
+car: 787 / 1932 (40.73%)
+motorcycle: 48 / 371 (12.94%)
+airplane: 28 / 143 (19.58%)
+bus: 86 / 285 (30.18%)
+train: 36 / 190 (18.95%)
+boat: 67 / 430 (15.58%)
+person: 4134 / 11004 (37.57%)
+Percentage of total instances of class_set chosen: 33.60%
+Percentage of total instances in the selected images list: 71.60%
 
 Category-wise Statistics Val task 2
 stop sign: 49 / 75 (65.33%)

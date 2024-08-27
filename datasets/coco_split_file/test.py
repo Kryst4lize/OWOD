@@ -1,7 +1,7 @@
 import csv
 import masking as mk
 import select as slt
-
+import instance as ins 
 T1_COCO_CLASS_NAMES = [
     "airplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat",
     "chair", "cow", "dining table", "dog", "horse", "motorcycle", "person",
@@ -31,9 +31,10 @@ min_images_required = 20000
 max_images_required = 20000
 min_images_required_val = 1000
 max_images_required_val = 1000
-
-annotation_path_1 =    '../annotations/instances_train2017.json'
-annotation_path_2 =    '../annotations/instances_val2017.json'
+annotation_path1 =    '../annotations/instances_train2017.json'
+annotation_path2 =    '../annotations/instances_val2017.json'
+annotation_path_1 =    '../annotations/instances_train2017_processed.json'
+annotation_path_2 =    '../annotations/instances_val2017_processed.json'
 destination_path =   '../json_coco_file/'
 
 Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
@@ -59,11 +60,14 @@ Spliting_file_name =[[destination_path+'T0_instances_train2017.json'],
                      [destination_path+'T4_instances_val2017.json',destination_path+'T4_instances_train2017.json']]
 
 # Change id of annotation 
-mk.process_coco_categories(annotation_path_1, annotation_path_1, Class)
-mk.process_coco_categories(annotation_path_2, annotation_path_2, Class)
-# Split the original COCO annotations file into 5 different task (only list of images)
+"""
+mk.process_coco_categories(annotation_path1, annotation_path_1, Class)
+mk.process_coco_categories(annotation_path2, annotation_path_2, Class)
+"""
 
+# Split the original COCO annotations file into 5 different task (only list of images)
 # Train images file
+
 slt.process_coco_annotations_task(annotation_path_1,Image_list_train[1], min_images_required_task1, max_images_required_task1, Class[0], Image_list_train[0])
 slt.process_coco_annotations_task(annotation_path_1,Image_list_train[2], min_images_required, max_images_required, Class[1], Image_list_train[1])
 slt.process_coco_annotations_task(annotation_path_1,Image_list_train[3], min_images_required, max_images_required, Class[2], Image_list_train[2])
@@ -92,6 +96,21 @@ mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[4][0]
 for file_group in Spliting_file_name:
     for file_path in file_group:
         mk.compress_coco_json(file_path)
+
+
+# Test out
+"""
+print("Original stats of the COCO dataset")
+ins.print_coco_categories_and_instances(annotation_path1)
+
+print("Stats of the COCO dataset after changing the category IDs")
+ins.print_coco_categories_and_instances(annotation_path_1)
+"""
+print("Stats of the COCO dataset in each task")
+for file_group in Spliting_file_name:
+    for file_path in file_group:
+        print("Task")
+        ins.print_coco_categories_and_instances(file_path)
 
         
 # All comment below are for testing, validate and give an example of how to use the function

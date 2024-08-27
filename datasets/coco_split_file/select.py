@@ -101,7 +101,7 @@ def process_coco_annotations_task(input_json, output_json, min_images, max_image
         selected_instances = selected_class_set_1_instances[category_id]
         category_name = category_mapping[category_id]
         percentage = (selected_instances / total_instances) * 100 if total_instances > 0 else 0
-        print(f"{category_name}: {selected_instances} / {total_instances} ({percentage:.2f}%)")
+        #print(f"{category_name}: {selected_instances} / {total_instances} ({percentage:.2f}%)")
 
     percentage_chosen_class_set_1 = (total_selected_class_set_1_instances / total_class_set_1_instances) * 100 if total_class_set_1_instances > 0 else 0
     percentage_total_instances = (total_selected_class_set_1_instances / total_selected_instances) * 100 if total_selected_instances > 0 else 0
