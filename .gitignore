@@ -1,0 +1,7 @@
+datasets/annotations/
+Lib/
+Scripts/
+datasets/coco_split_file/__pycache__/
+pyvenv.cfg
+share/
+datasets/json_coco_file/*
