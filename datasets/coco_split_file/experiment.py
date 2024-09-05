@@ -535,8 +535,8 @@ def process_coco_annotations_task(input_json, output_json, image_file, class_set
     random.shuffle(image_list)
     
     # Split the images into two sets
-    images_val = image_list[:1000]
-    images_test = image_list[1000:]
+    images_1000 = image_list[:1000]
+    images_20000 = image_list[1000:]
     
     # Helper function to filter the COCO data
     def filter_coco_data(image_set, coco_data, class_set):
@@ -565,19 +565,19 @@ def process_coco_annotations_task(input_json, output_json, image_file, class_set
         return filtered_coco_data
     
     # Convert images to sets for quick lookup
-    image_set_val = {img for img in coco_data['images'] if img['file_name'] in images_val}
-    image_set_test = {img for img in coco_data['images'] if img['file_name'] in images_test}
+    image_set_1000 = {img for img in coco_data['images'] if img['file_name'] in images_1000}
+    image_set_20000 = {img for img in coco_data['images'] if img['file_name'] in images_20000}
     
     # Filter the COCO data for each set
-    filtered_coco_data_val = filter_coco_data(image_set_val, coco_data, class_set)
-    filtered_coco_data_test = filter_coco_data(image_set_test, coco_data, class_set)
+    filtered_coco_data_1000 = filter_coco_data(image_set_1000, coco_data, class_set)
+    filtered_coco_data_20000 = filter_coco_data(image_set_20000, coco_data, class_set)
     
     # Save the filtered COCO data to the output files
     output_json_1, output_json_2 = output_json
     with open(output_json_1, 'w') as f:
-        json.dump(filtered_coco_data_val, f, indent=4)
+        json.dump(filtered_coco_data_1000, f, indent=4)
     
     with open(output_json_2, 'w') as f:
-        json.dump(filtered_coco_data_test, f, indent=4)
+        json.dump(filtered_coco_data_20000, f, indent=4)
     
-    return [filtered_coco_data_val, filtered_coco_data_test]
+    return [filtered_coco_data_1000, filtered_coco_data_20000]
