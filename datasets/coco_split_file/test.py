@@ -62,7 +62,7 @@ Spliting_file_name_2 =  [   destination_path+'T1_instance_train_new.json',
                             destination_path+'T4_instance_train_new.json'
                         ]
 # Change id of annotation 
-"""
+
 mk.process_coco_categories(annotation_path1, annotation_path_1, Class)
 mk.process_coco_categories(annotation_path2, annotation_path_2, Class)
 
@@ -80,10 +80,10 @@ slt.process_coco_annotations_task(annotation_path_2,Image_list_val[1], min_image
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[2], min_images_required_val, max_images_required_val, Class[1], Image_list_val[1])
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[3], min_images_required_val, max_images_required_val, Class[2], Image_list_val[2])
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[4], min_images_required_val, max_images_required_val, Class[3], Image_list_val[3])
-"""
+
 # Process into COCO format
 # Split coco files train
-"""
+
 mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[1][1], Image_list_train[1], Class[0], [])
 mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[2][1], Image_list_train[2], Class[1], [Class[0]])
 mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[3][1], Image_list_train[3], Class[2], [Class[0],Class[1]])
@@ -116,7 +116,7 @@ for file_group in Spliting_file_name:
  
 for file_path in Spliting_file_name_2:
     mk.compress_coco_json(file_path)
-"""
+
 # Test out
 # Save a statistic file for COCO processing file
 ins.task_statistic(annotation_path_1, Class, destination_path+'task_statistic1.txt')

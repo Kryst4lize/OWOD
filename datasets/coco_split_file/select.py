@@ -140,3 +140,4 @@ def get_unique_images(input_json ,output_json, list_json):
         json.dump(unique_images_list, f, indent=4)
     
     return unique_images_list
+
