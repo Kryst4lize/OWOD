@@ -31,55 +31,77 @@ min_images_required = 20000
 max_images_required = 20000
 min_images_required_val = 1000
 max_images_required_val = 1000
-annotation_path1 =    '../annotations/instances_train2017.json'
-annotation_path2 =    '../annotations/instances_val2017.json'
-annotation_path_1 =    '../annotations/instances_train2017_processed.json'
-annotation_path_2 =    '../annotations/instances_val2017_processed.json'
-destination_path =   '../json_coco_file/'
-
+annotation_path1  =  '../annotations/instances_train2017.json'
+annotation_path2  =  '../annotations/instances_val2017.json'
+annotation_path_1 =  '../annotations/instances_train2017_processed.json'
+annotation_path_2 =  '../annotations/instances_val2017_processed.json'
+# remainning_train_path = '../annotations/instances_val2017_2_from_remaining_train.json'
+destination_path  =  '../json_coco_file/'
 Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
 
-Image_list_train = [destination_path+'image_list_blank.json',     # Create manually or code, which doesn't have any images. Content: []  
-                    destination_path+'image_list_train_task1.json',
-                    destination_path+'image_list_train_task2.json',
-                    destination_path+'image_list_train_task3.json',
-                    destination_path+'image_list_train_task4.json',
-                    destination_path+'image_list_train_task0.json']
+Image_list_train =      [   destination_path+'image_list_blank.json',     # Create manually or code, which doesn't have any images. Content: []  
+                            destination_path+'image_list_train_task1.json',
+                            destination_path+'image_list_train_task2.json',
+                            destination_path+'image_list_train_task3.json',
+                            destination_path+'image_list_train_task4.json',
+                            destination_path+'image_list_train_task0.json']
 
-Image_list_val = [  destination_path+'image_list_blank.json',     # Create manually or code, which doesn't have any images. Content: []  
-                    destination_path+'image_list_val_task1.json',
-                    destination_path+'image_list_val_task2.json',
-                    destination_path+'image_list_val_task3.json',
-                    destination_path+'image_list_val_task4.json'
-                ]
-
-Spliting_file_name =[[destination_path+'T0_instances_train2017.json'],
-                     [destination_path+'T1_instances_val2017.json',destination_path+'T1_instances_train2017.json'], 
-                     [destination_path+'T2_instances_val2017.json',destination_path+'T2_instances_train2017.json'], 
-                     [destination_path+'T3_instances_val2017.json',destination_path+'T3_instances_train2017.json'], 
-                     [destination_path+'T4_instances_val2017.json',destination_path+'T4_instances_train2017.json']]
-
-# Change id of annotation 
+Image_list_val =        [   destination_path+'image_list_blank.json',     # Create manually or code, which doesn't have any images. Content: []  
+                            destination_path+'image_list_val_task1.json',
+                            destination_path+'image_list_val_task2.json',
+                            destination_path+'image_list_val_task3.json',
+                            destination_path+'image_list_val_task4.json'
+                        ]
 """
+Image_list_remaining =  [   destination_path+'image_list_blank.json',
+                            destination_path+'image_list_remaining_task1.json',
+                            destination_path+'image_list_remaining_task2.json',
+                            destination_path+'image_list_remaining_task3.json',
+                            destination_path+'image_list_remaining_task4.json']
+"""
+Spliting_file_name =    [   [destination_path+'T0_instances_train2017.json'],
+                            [destination_path+'T1_instances_val2017.json',destination_path+'T1_instances_train2017.json', destination_path+'T1_instances_val_2017_2.json', destination_path+'T1_instance_train_new.json'], 
+                            [destination_path+'T2_instances_val2017.json',destination_path+'T2_instances_train2017.json', destination_path+'T2_instances_val_2017_2.json', destination_path+'T2_instance_train_new.json'], 
+                            [destination_path+'T3_instances_val2017.json',destination_path+'T3_instances_train2017.json', destination_path+'T3_instances_val_2017_2.json', destination_path+'T3_instance_train_new.json'], 
+                            [destination_path+'T4_instances_val2017.json',destination_path+'T4_instances_train2017.json', destination_path+'T4_instances_val_2017_2.json', destination_path+'T4_instance_train_new.json']]
+"""
+# Change id of annotation 
+
 mk.process_coco_categories(annotation_path1, annotation_path_1, Class)
 mk.process_coco_categories(annotation_path2, annotation_path_2, Class)
-"""
 
 # Split the original COCO annotations file into 5 different task (only list of images)
-# Train images file
 
+# Train images file
 slt.process_coco_annotations_task(annotation_path_1,Image_list_train[1], min_images_required_task1, max_images_required_task1, Class[0], Image_list_train[0])
 slt.process_coco_annotations_task(annotation_path_1,Image_list_train[2], min_images_required, max_images_required, Class[1], Image_list_train[1])
 slt.process_coco_annotations_task(annotation_path_1,Image_list_train[3], min_images_required, max_images_required, Class[2], Image_list_train[2])
 slt.process_coco_annotations_task(annotation_path_1,Image_list_train[4], min_images_required, max_images_required, Class[3], Image_list_train[3])
 slt.get_unique_images(annotation_path_1, Image_list_train[5], Image_list_train[:5])
+
 # Validation images file
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[1], min_images_required_val, max_images_required_val, Class[0], Image_list_val[0])
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[2], min_images_required_val, max_images_required_val, Class[1], Image_list_val[1])
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[3], min_images_required_val, max_images_required_val, Class[2], Image_list_val[2])
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[4], min_images_required_val, max_images_required_val, Class[3], Image_list_val[3])
 
+
+# Process remaining images list to COCO files
+mk.reverse_coco_map(annotation_path_1, Image_list_train[5], remainning_train_path)
+ins.task_statistic(remainning_train_path, Class, destination_path+'task_statistic0.txt')
+mk.compress_coco_json(remainning_train_path)
+
+# Remaining images file
+slt.process_coco_annotations_task(remainning_train_path, Image_list_remaining[1], min_images_required_val,max_images_required_val, Class[0], Image_list_remaining[0])
+slt.process_coco_annotations_task(remainning_train_path, Image_list_remaining[2], min_images_required_val,max_images_required_val, Class[1], Image_list_remaining[1])
+slt.process_coco_annotations_task(remainning_train_path, Image_list_remaining[3], min_images_required_val,max_images_required_val, Class[2], Image_list_remaining[2])
+slt.process_coco_annotations_task(remainning_train_path, Image_list_remaining[4], min_images_required_val,max_images_required_val, Class[3], Image_list_remaining[3])
+
+
+
+# Process into COCO format
 # Split coco files train
+
 mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[1][1], Image_list_train[1], Class[0])
 mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[2][1], Image_list_train[2], Class[1])
 mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[3][1], Image_list_train[3], Class[2])
@@ -92,6 +114,12 @@ mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[2][0]
 mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[3][0], Image_list_val[3], Class[2])
 mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[4][0], Image_list_val[4], Class[3])
 
+# Split remaining train to val
+mk.process_coco_annotations_task_val(remainning_train_path, Spliting_file_name[1][2], Image_list_val[1], Class[0])
+mk.process_coco_annotations_task_val(remainning_train_path, Spliting_file_name[2][2], Image_list_val[2], Class[1])
+mk.process_coco_annotations_task_val(remainning_train_path, Spliting_file_name[3][2], Image_list_val[3], Class[2])
+mk.process_coco_annotations_task_val(remainning_train_path, Spliting_file_name[4][2], Image_list_val[4], Class[3])
+
 # Compress the file 
 for file_group in Spliting_file_name:
     for file_path in file_group:
@@ -99,20 +127,26 @@ for file_group in Spliting_file_name:
 
 
 # Test out
-"""
+
+
+ins.task_statistic(annotation_path_1, Class, destination_path+'task_statistic1.txt')
+ins.task_statistic(annotation_path_2, Class, destination_path+'task_statistic2.txt')
 print("Original stats of the COCO dataset")
 ins.print_coco_categories_and_instances(annotation_path1)
 
 print("Stats of the COCO dataset after changing the category IDs")
 ins.print_coco_categories_and_instances(annotation_path_1)
-"""
+
 print("Stats of the COCO dataset in each task")
 for file_group in Spliting_file_name:
     for file_path in file_group:
         print("Task")
         ins.print_coco_categories_and_instances(file_path)
 
-        
+"""
+# mk.process_coco_annotations_adding(Spliting_file_name[2][1], annotation_path_1,Spliting_file_name[2][3], Class[1], [Class[0]],max_images_required,Image_list_train[1])
+ins.print_coco_categories_and_instances(Spliting_file_name[2][3])   
+ins.count_total_images_in_coco(Spliting_file_name[2][3])
 # All comment below are for testing, validate and give an example of how to use the function
 
 # mk.masking_json(annotation_path_1, destination_path+spliting_file_name[1], Class[1], num_images= 3000) 
