@@ -134,15 +134,40 @@ def print_coco_categories_and_instances(coco_file_path):
         else:
             check =1 
             
-        
-
     # Print categories and their instance counts
     for cat_id, count in category_instance_counts.items():
         category_name = category_dict[cat_id]
         print(f"Category Name: {category_name}, Category ID: {cat_id}, Total Instances: {count}")
 
-# Example
+def get_coco_categories_and_instances(coco_file_path):
+    # Load the COCO annotation file
+    with open(coco_file_path, 'r') as f:
+        coco_data = json.load(f)
 
+    # Extract categories and annotations
+    categories = coco_data.get('categories', [])
+    annotations = coco_data.get('annotations', [])
+
+    # Create a dictionary to map category IDs to their names
+    category_dict = {cat['id']: cat['name'] for cat in categories}
+
+    # Create a dictionary to count instances per category
+    category_instance_counts = {cat_id: 0 for cat_id in category_dict.keys()}
+
+    # Count instances for each category
+    for annotation in annotations:
+        cat_id = annotation['category_id']
+        if cat_id in category_instance_counts:
+            category_instance_counts[cat_id] += 1
+
+    # Create the string output instead of printing
+    output = []
+    for cat_id, count in category_instance_counts.items():
+        category_name = category_dict[cat_id]
+        output.append(f"Category Name: {category_name}, Category ID: {cat_id}, Total Instances: {count}")
+    
+    # Join the list into a single string with newline characters
+    return "\n".join(output)
 
 def task_statistic(input_json, class_set, output_file):
     # Load the COCO annotation file
