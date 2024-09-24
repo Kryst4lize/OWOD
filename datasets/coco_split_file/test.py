@@ -35,7 +35,6 @@ annotation_path1  =  '../annotations/instances_train2017.json'
 annotation_path2  =  '../annotations/instances_val2017.json'
 annotation_path_1 =  '../annotations/instances_train2017_processed.json'
 annotation_path_2 =  '../annotations/instances_val2017_processed.json'
-# remainning_train_path = '../annotations/instances_val2017_2_from_remaining_train.json'
 destination_path  =  '../json_coco_file/'
 Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
 
@@ -52,21 +51,18 @@ Image_list_val =        [   destination_path+'image_list_blank.json',     # Crea
                             destination_path+'image_list_val_task3.json',
                             destination_path+'image_list_val_task4.json'
                         ]
-"""
-Image_list_remaining =  [   destination_path+'image_list_blank.json',
-                            destination_path+'image_list_remaining_task1.json',
-                            destination_path+'image_list_remaining_task2.json',
-                            destination_path+'image_list_remaining_task3.json',
-                            destination_path+'image_list_remaining_task4.json']
-"""
 Spliting_file_name =    [   [destination_path+'T0_instances_train2017.json'],
-                            [destination_path+'T1_instances_val2017.json',destination_path+'T1_instances_train2017.json', destination_path+'T1_instances_val_2017_2.json', destination_path+'T1_instance_train_new.json'], 
-                            [destination_path+'T2_instances_val2017.json',destination_path+'T2_instances_train2017.json', destination_path+'T2_instances_val_2017_2.json', destination_path+'T2_instance_train_new.json'], 
-                            [destination_path+'T3_instances_val2017.json',destination_path+'T3_instances_train2017.json', destination_path+'T3_instances_val_2017_2.json', destination_path+'T3_instance_train_new.json'], 
-                            [destination_path+'T4_instances_val2017.json',destination_path+'T4_instances_train2017.json', destination_path+'T4_instances_val_2017_2.json', destination_path+'T4_instance_train_new.json']]
-"""
+                            [destination_path+'T1_instances_val2017.json',destination_path+'T1_instances_train2017.json'], 
+                            [destination_path+'T2_instances_val2017.json',destination_path+'T2_instances_train2017.json'], 
+                            [destination_path+'T3_instances_val2017.json',destination_path+'T3_instances_train2017.json'], 
+                            [destination_path+'T4_instances_val2017.json',destination_path+'T4_instances_train2017.json']]
+Spliting_file_name_2 =  [   destination_path+'T1_instance_train_new.json',
+                            destination_path+'T2_instance_train_new.json',
+                            destination_path+'T3_instance_train_new.json',
+                            destination_path+'T4_instance_train_new.json'
+                        ]
 # Change id of annotation 
-
+"""
 mk.process_coco_categories(annotation_path1, annotation_path_1, Class)
 mk.process_coco_categories(annotation_path2, annotation_path_2, Class)
 
@@ -84,28 +80,14 @@ slt.process_coco_annotations_task(annotation_path_2,Image_list_val[1], min_image
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[2], min_images_required_val, max_images_required_val, Class[1], Image_list_val[1])
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[3], min_images_required_val, max_images_required_val, Class[2], Image_list_val[2])
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[4], min_images_required_val, max_images_required_val, Class[3], Image_list_val[3])
-
-
-# Process remaining images list to COCO files
-mk.reverse_coco_map(annotation_path_1, Image_list_train[5], remainning_train_path)
-ins.task_statistic(remainning_train_path, Class, destination_path+'task_statistic0.txt')
-mk.compress_coco_json(remainning_train_path)
-
-# Remaining images file
-slt.process_coco_annotations_task(remainning_train_path, Image_list_remaining[1], min_images_required_val,max_images_required_val, Class[0], Image_list_remaining[0])
-slt.process_coco_annotations_task(remainning_train_path, Image_list_remaining[2], min_images_required_val,max_images_required_val, Class[1], Image_list_remaining[1])
-slt.process_coco_annotations_task(remainning_train_path, Image_list_remaining[3], min_images_required_val,max_images_required_val, Class[2], Image_list_remaining[2])
-slt.process_coco_annotations_task(remainning_train_path, Image_list_remaining[4], min_images_required_val,max_images_required_val, Class[3], Image_list_remaining[3])
-
-
-
+"""
 # Process into COCO format
 # Split coco files train
-
-mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[1][1], Image_list_train[1], Class[0])
-mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[2][1], Image_list_train[2], Class[1])
-mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[3][1], Image_list_train[3], Class[2])
-mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[4][1], Image_list_train[4], Class[3])
+"""
+mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[1][1], Image_list_train[1], Class[0], [])
+mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[2][1], Image_list_train[2], Class[1], [Class[0]])
+mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[3][1], Image_list_train[3], Class[2], [Class[0],Class[1]])
+mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[4][1], Image_list_train[4], Class[3], [Class[0],Class[1],Class[2]])
 mk.process_coco_annotations_unknown(annotation_path_1, Spliting_file_name[0][0], Image_list_train[5])
 
 # Split coco files val
@@ -114,21 +96,29 @@ mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[2][0]
 mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[3][0], Image_list_val[3], Class[2])
 mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[4][0], Image_list_val[4], Class[3])
 
-# Split remaining train to val
-mk.process_coco_annotations_task_val(remainning_train_path, Spliting_file_name[1][2], Image_list_val[1], Class[0])
-mk.process_coco_annotations_task_val(remainning_train_path, Spliting_file_name[2][2], Image_list_val[2], Class[1])
-mk.process_coco_annotations_task_val(remainning_train_path, Spliting_file_name[3][2], Image_list_val[3], Class[2])
-mk.process_coco_annotations_task_val(remainning_train_path, Spliting_file_name[4][2], Image_list_val[4], Class[3])
+# Keep minimum instance in previous task (training one)
+mk.process_coco_annotations_adding(Spliting_file_name[1][1], annotation_path_1,Spliting_file_name_2[0], Class[0], [],max_images_required,Image_list_train[1]) 
+mk.process_coco_annotations_adding(Spliting_file_name[2][1], annotation_path_1,Spliting_file_name_2[1], Class[1], [Class[0]],max_images_required,Image_list_train[1])
+mk.process_coco_annotations_adding(Spliting_file_name[3][1], annotation_path_1,Spliting_file_name_2[2], Class[2], [Class[0],Class[1]],max_images_required,Image_list_train[1])
+mk.process_coco_annotations_adding(Spliting_file_name[4][1], annotation_path_1,Spliting_file_name_2[3], Class[3], [Class[0],Class[1],Class[2]],max_images_required,Image_list_train[1])
+
+
+# Keep minimum instance in previous task 
+mk.process_coco_annotations_adding(Spliting_file_name[1][1], annotation_path_1,Spliting_file_name_2[0], Class[0], [],max_images_required,Image_list_train[1]) 
+mk.process_coco_annotations_adding(Spliting_file_name[2][1], annotation_path_1,Spliting_file_name_2[1], Class[1], [Class[0]],max_images_required,Image_list_train[1])
+mk.process_coco_annotations_adding(Spliting_file_name[3][1], annotation_path_1,Spliting_file_name_2[2], Class[2], [Class[0],Class[1]],max_images_required,Image_list_train[1])
+mk.process_coco_annotations_adding(Spliting_file_name[4][1], annotation_path_1,Spliting_file_name_2[3], Class[3], [Class[0],Class[1],Class[2]],max_images_required,Image_list_train[1])
 
 # Compress the file 
 for file_group in Spliting_file_name:
     for file_path in file_group:
         mk.compress_coco_json(file_path)
-
-
+ 
+for file_path in Spliting_file_name_2:
+    mk.compress_coco_json(file_path)
+"""
 # Test out
-
-
+# Save a statistic file for COCO processing file
 ins.task_statistic(annotation_path_1, Class, destination_path+'task_statistic1.txt')
 ins.task_statistic(annotation_path_2, Class, destination_path+'task_statistic2.txt')
 print("Original stats of the COCO dataset")
@@ -137,16 +127,28 @@ ins.print_coco_categories_and_instances(annotation_path1)
 print("Stats of the COCO dataset after changing the category IDs")
 ins.print_coco_categories_and_instances(annotation_path_1)
 
+# Save a statistic file for each task
 print("Stats of the COCO dataset in each task")
+combined_output = []
 for file_group in Spliting_file_name:
     for file_path in file_group:
-        print("Task")
-        ins.print_coco_categories_and_instances(file_path)
+        combined_output.append("Task")  # This adds "Task" as a header for each file
+        task_output = ins.get_coco_categories_and_instances(file_path)
+        combined_output.append(task_output)  # Collect the result from each file
 
-"""
-# mk.process_coco_annotations_adding(Spliting_file_name[2][1], annotation_path_1,Spliting_file_name[2][3], Class[1], [Class[0]],max_images_required,Image_list_train[1])
-ins.print_coco_categories_and_instances(Spliting_file_name[2][3])   
-ins.count_total_images_in_coco(Spliting_file_name[2][3])
+for file_path in Spliting_file_name_2:
+    combined_output.append("Stats of new file trained processed")
+    task_output=ins.get_coco_categories_and_instances(file_path)
+    combined_output.append(task_output)
+
+final_output = "\n".join(combined_output)    # Join all the outputs with new lines separating them
+
+# Save the combined output to a text file
+with open(destination_path+'task_statistic.txt', 'w') as f:
+    f.write(final_output)
+
+
+
 # All comment below are for testing, validate and give an example of how to use the function
 
 # mk.masking_json(annotation_path_1, destination_path+spliting_file_name[1], Class[1], num_images= 3000) 
