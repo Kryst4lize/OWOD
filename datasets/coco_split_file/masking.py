@@ -87,6 +87,79 @@ def process_coco_annotations_task(input_json, output_json, image_file, class_set
     
     return filtered_coco_data
 
+
+def process_coco_annotations_task_val_new(input_json, output_json, image_file, class_set):
+    # Load input COCO annotations file
+    with open(input_json, 'r') as f:
+        coco_data = json.load(f)
+    
+    # Load all image files and combine them into a single set
+    combined_image_set = set()
+    for image_file in image_file:
+        with open(image_file, 'r') as f:
+            image_list = json.load(f)
+            combined_image_set.update(image_list)  # Add images to the set
+    
+    # Create a set of image file names for quick lookup
+    image_set = set(combined_image_set)
+    
+    # Filter images in the COCO data to only keep the ones in image_set
+    filtered_images = [img for img in coco_data['images'] if img['file_name'] in image_set]
+    image_ids = {img['id'] for img in filtered_images}
+    
+    # Filter annotations to only keep those corresponding to the selected images
+    filtered_annotations = [ann for ann in coco_data['annotations'] if ann['image_id'] in image_ids]
+    
+    # Initialize a combined category set
+    combined_class_set = set()
+    
+    # Convert all class sets to lowercase and combine them
+    for class_set in class_set:
+        combined_class_set.update({cls.lower() for cls in class_set})
+    filtered_categories = [cat for cat in coco_data['categories'] if cat['name'].lower() in combined_class_set]
+    category_ids = {cat['id'] for cat in filtered_categories}
+    
+    # Check if 'unknown' category already exists
+    unknown_category = next((cat for cat in coco_data['categories'] if cat['name'].lower() == 'unknown'), None)
+    if unknown_category:
+        unknown_category_id = unknown_category['id']
+    else:
+        # Assign a new ID for 'unknown' category
+        unknown_category_id = max(cat['id'] for cat in coco_data['categories']) + 1
+        filtered_categories.append({
+            'id': unknown_category_id,
+            'name': 'unknown',
+            'supercategory': 'unknown'
+        })
+    
+    # Update annotations: change category to 'unknown' if it doesn't belong to the specified classes
+    for ann in filtered_annotations:
+        if ann['category_id'] not in category_ids:
+            ann['category_id'] = unknown_category_id
+    
+    # TODO: Not remove all categories. Instead, keep it 
+    filtered_categories = [cat for cat in coco_data['categories']]
+    unknown_category_id = max(cat['id'] for cat in coco_data['categories']) + 1
+    filtered_categories.append({
+        'id': unknown_category_id,
+        'name': 'unknown',
+        'supercategory': 'unknown'
+    })
+    # Construct the output COCO data structure
+    filtered_coco_data = {
+        'images': filtered_images,
+        'annotations': filtered_annotations,
+        'categories': filtered_categories,
+        'info': coco_data.get('info', {}),
+        'licenses': coco_data.get('licenses', []),
+    }
+    
+    # Save the filtered COCO data to the output file
+    with open(output_json, 'w') as f:
+        json.dump(filtered_coco_data, f, indent=4)
+    
+    return filtered_coco_data
+
 def process_coco_annotations_task_val(input_json, output_json, image_file, class_set):
     # Load input COCO annotations file
     with open(input_json, 'r') as f:

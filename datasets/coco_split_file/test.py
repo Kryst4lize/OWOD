@@ -51,18 +51,26 @@ Image_list_val =        [   destination_path+'image_list_blank.json',     # Crea
                             destination_path+'image_list_val_task3.json',
                             destination_path+'image_list_val_task4.json'
                         ]
+
 Spliting_file_name =    [   [destination_path+'T0_instances_train2017.json'],
                             [destination_path+'T1_instances_val2017.json',destination_path+'T1_instances_train2017.json'], 
                             [destination_path+'T2_instances_val2017.json',destination_path+'T2_instances_train2017.json'], 
                             [destination_path+'T3_instances_val2017.json',destination_path+'T3_instances_train2017.json'], 
                             [destination_path+'T4_instances_val2017.json',destination_path+'T4_instances_train2017.json']]
+
 Spliting_file_name_2 =  [   destination_path+'T1_instance_train_new.json',
                             destination_path+'T2_instance_train_new.json',
                             destination_path+'T3_instance_train_new.json',
                             destination_path+'T4_instance_train_new.json'
                         ]
-# Change id of annotation 
 
+Spliting_file_name_3 =  [   destination_path+'T1_instance_val_new.json',
+                            destination_path+'T2_instance_val_new.json',
+                            destination_path+'T3_instance_val_new.json',
+                            destination_path+'T4_instance_val_new.json'
+                        ]
+# Change id of annotation 
+"""
 mk.process_coco_categories(annotation_path1, annotation_path_1, Class)
 mk.process_coco_categories(annotation_path2, annotation_path_2, Class)
 
@@ -101,13 +109,12 @@ mk.process_coco_annotations_adding(Spliting_file_name[1][1], annotation_path_1,S
 mk.process_coco_annotations_adding(Spliting_file_name[2][1], annotation_path_1,Spliting_file_name_2[1], Class[1], [Class[0]],max_images_required,Image_list_train[1])
 mk.process_coco_annotations_adding(Spliting_file_name[3][1], annotation_path_1,Spliting_file_name_2[2], Class[2], [Class[0],Class[1]],max_images_required,Image_list_train[1])
 mk.process_coco_annotations_adding(Spliting_file_name[4][1], annotation_path_1,Spliting_file_name_2[3], Class[3], [Class[0],Class[1],Class[2]],max_images_required,Image_list_train[1])
-
-
-# Keep minimum instance in previous task 
-mk.process_coco_annotations_adding(Spliting_file_name[1][1], annotation_path_1,Spliting_file_name_2[0], Class[0], [],max_images_required,Image_list_train[1]) 
-mk.process_coco_annotations_adding(Spliting_file_name[2][1], annotation_path_1,Spliting_file_name_2[1], Class[1], [Class[0]],max_images_required,Image_list_train[1])
-mk.process_coco_annotations_adding(Spliting_file_name[3][1], annotation_path_1,Spliting_file_name_2[2], Class[2], [Class[0],Class[1]],max_images_required,Image_list_train[1])
-mk.process_coco_annotations_adding(Spliting_file_name[4][1], annotation_path_1,Spliting_file_name_2[3], Class[3], [Class[0],Class[1],Class[2]],max_images_required,Image_list_train[1])
+"""
+# Split coco files val new
+mk.process_coco_annotations_task_val_new(annotation_path_2, Spliting_file_name_3[0], [Image_list_val[1]], [Class[0]])
+mk.process_coco_annotations_task_val_new(annotation_path_2, Spliting_file_name_3[1], [Image_list_val[1],Image_list_val[2]], [Class[0],Class[1]])
+mk.process_coco_annotations_task_val_new(annotation_path_2, Spliting_file_name_3[2], [Image_list_val[1],Image_list_val[2],Image_list_val[3]], [Class[0],Class[1],Class[2]])
+mk.process_coco_annotations_task_val_new(annotation_path_2, Spliting_file_name_3[3], [Image_list_val[1],Image_list_val[2],Image_list_val[3],Image_list_val[4]], [Class[0],Class[1],Class[2],Class[3]])
 
 # Compress the file 
 for file_group in Spliting_file_name:
@@ -138,6 +145,11 @@ for file_group in Spliting_file_name:
 
 for file_path in Spliting_file_name_2:
     combined_output.append("Stats of new file trained processed")
+    task_output=ins.get_coco_categories_and_instances(file_path)
+    combined_output.append(task_output)
+
+for file_path in Spliting_file_name_3:
+    combined_output.append("Stats of new file val processed")
     task_output=ins.get_coco_categories_and_instances(file_path)
     combined_output.append(task_output)
 
