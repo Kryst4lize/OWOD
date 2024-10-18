@@ -141,3 +141,12 @@ def get_unique_images(input_json ,output_json, list_json):
     
     return unique_images_list
 
+def json_2_txt(json_file, output_file):
+    with open(json_file, 'r') as f:
+        image_list = json.load(f)
+    
+    # Save the list of images to a text file without the '.jpg' extension
+    with open(output_file, 'w') as f:
+        for image in image_list:
+            image_name = image.replace('.jpg', '')  # Remove the '.jpg' extension
+            f.write(f"{image_name}\n")
