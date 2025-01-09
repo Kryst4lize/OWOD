@@ -2,6 +2,7 @@ import csv
 import masking as mk
 import select as slt
 import instance as ins 
+import oldeval as oe
 T1_COCO_CLASS_NAMES = [
     "airplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat",
     "chair", "cow", "dining table", "dog", "horse", "motorcycle", "person",
@@ -38,6 +39,11 @@ annotation_path_2 =  '../annotations/instances_val2017_processed.json'
 destination_path  =  '../json_coco_file/'
 Class = [T1_COCO_CLASS_NAMES,T2_CLASS_NAMES,T3_CLASS_NAMES,T4_CLASS_NAMES]
 
+Image_list_train_old =  [   destination_path+'image_list_train_old1.json',
+                            destination_path+'image_list_train_old2.json',
+                            destination_path+'image_list_train_old3.json',
+                            destination_path+'image_list_train_old4.json']
+
 Image_list_train =      [   destination_path+'image_list_blank.json',     # Create manually or code, which doesn't have any images. Content: []  
                             destination_path+'image_list_train_task1.json',
                             destination_path+'image_list_train_task2.json',
@@ -51,6 +57,12 @@ Image_list_val =        [   destination_path+'image_list_blank.json',     # Crea
                             destination_path+'image_list_val_task3.json',
                             destination_path+'image_list_val_task4.json'
                         ]
+
+Old_version_evaluation =[   destination_path+'T1_instances_train_old.json',
+                            destination_path+'T2_instances_train_old.json',
+                            destination_path+'T3_instances_train_old.json',
+                            destination_path+'T4_instances_train_old.json']
+
 Spliting_file_name =    [   [destination_path+'T0_instances_train2017.json'],
                             [destination_path+'T1_instances_val2017.json',destination_path+'T1_instances_train2017.json'], 
                             [destination_path+'T2_instances_val2017.json',destination_path+'T2_instances_train2017.json'], 
@@ -62,7 +74,7 @@ Spliting_file_name_2 =  [   destination_path+'T1_instance_train_new.json',
                             destination_path+'T4_instance_train_new.json'
                         ]
 # Change id of annotation 
-"""
+
 mk.process_coco_categories(annotation_path1, annotation_path_1, Class)
 mk.process_coco_categories(annotation_path2, annotation_path_2, Class)
 
@@ -80,10 +92,16 @@ slt.process_coco_annotations_task(annotation_path_2,Image_list_val[1], min_image
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[2], min_images_required_val, max_images_required_val, Class[1], Image_list_val[1])
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[3], min_images_required_val, max_images_required_val, Class[2], Image_list_val[2])
 slt.process_coco_annotations_task(annotation_path_2,Image_list_val[4], min_images_required_val, max_images_required_val, Class[3], Image_list_val[3])
-"""
+
+# Old version of evaluation images file
+oe.process_coco_annotations_task(annotation_path_1,Image_list_train_old[0],Class[0])
+oe.process_coco_annotations_task(annotation_path_1,Image_list_train_old[1],Class[1])
+oe.process_coco_annotations_task(annotation_path_1,Image_list_train_old[2],Class[2])
+oe.process_coco_annotations_task(annotation_path_1,Image_list_train_old[3],Class[3])
+
 # Process into COCO format
 # Split coco files train
-"""
+
 mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[1][1], Image_list_train[1], Class[0], [])
 mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[2][1], Image_list_train[2], Class[1], [Class[0]])
 mk.process_coco_annotations_task(annotation_path_1, Spliting_file_name[3][1], Image_list_train[3], Class[2], [Class[0],Class[1]])
@@ -96,14 +114,13 @@ mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[2][0]
 mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[3][0], Image_list_val[3], Class[2])
 mk.process_coco_annotations_task_val(annotation_path_2, Spliting_file_name[4][0], Image_list_val[4], Class[3])
 
+# Old version of evaluation images file
+mk.process_coco_annotations_task_val(annotation_path_1, Old_version_evaluation[0], Image_list_train_old[0], Class[0])
+mk.process_coco_annotations_task_val(annotation_path_1, Old_version_evaluation[1], Image_list_train_old[1], Class[1])
+mk.process_coco_annotations_task_val(annotation_path_1, Old_version_evaluation[2], Image_list_train_old[2], Class[2])
+mk.process_coco_annotations_task_val(annotation_path_1, Old_version_evaluation[3], Image_list_train_old[3], Class[3])
+
 # Keep minimum instance in previous task (training one)
-mk.process_coco_annotations_adding(Spliting_file_name[1][1], annotation_path_1,Spliting_file_name_2[0], Class[0], [],max_images_required,Image_list_train[1]) 
-mk.process_coco_annotations_adding(Spliting_file_name[2][1], annotation_path_1,Spliting_file_name_2[1], Class[1], [Class[0]],max_images_required,Image_list_train[1])
-mk.process_coco_annotations_adding(Spliting_file_name[3][1], annotation_path_1,Spliting_file_name_2[2], Class[2], [Class[0],Class[1]],max_images_required,Image_list_train[1])
-mk.process_coco_annotations_adding(Spliting_file_name[4][1], annotation_path_1,Spliting_file_name_2[3], Class[3], [Class[0],Class[1],Class[2]],max_images_required,Image_list_train[1])
-
-
-# Keep minimum instance in previous task 
 mk.process_coco_annotations_adding(Spliting_file_name[1][1], annotation_path_1,Spliting_file_name_2[0], Class[0], [],max_images_required,Image_list_train[1]) 
 mk.process_coco_annotations_adding(Spliting_file_name[2][1], annotation_path_1,Spliting_file_name_2[1], Class[1], [Class[0]],max_images_required,Image_list_train[1])
 mk.process_coco_annotations_adding(Spliting_file_name[3][1], annotation_path_1,Spliting_file_name_2[2], Class[2], [Class[0],Class[1]],max_images_required,Image_list_train[1])
@@ -116,7 +133,8 @@ for file_group in Spliting_file_name:
  
 for file_path in Spliting_file_name_2:
     mk.compress_coco_json(file_path)
-"""
+for Old_version in Old_version_evaluation:
+    mk.compress_coco_json(Old_version)
 # Test out
 # Save a statistic file for COCO processing file
 ins.task_statistic(annotation_path_1, Class, destination_path+'task_statistic1.txt')
@@ -147,6 +165,29 @@ final_output = "\n".join(combined_output)    # Join all the outputs with new lin
 with open(destination_path+'task_statistic.txt', 'w') as f:
     f.write(final_output)
 
+# Save a statistic file for old version of evaluation
+combined_output = []
+duplicate_percentages = ins.calculate_duplicate_percentages(Image_list_train_old, destination_path + 'Duplicate_evaluation.txt')
+combined_output.append("Duplicate Percentages:")
+import json
+combined_output.append(json.dumps(duplicate_percentages, indent=4))  
+
+# Join all the outputs with new lines separating them
+combined_output = "\n".join(combined_output)
+
+with open(destination_path+'task_statistic1.txt', 'a') as f:
+    f.write(combined_output)
+
+combined_output = []
+duplicate_percentages = ins.calculate_duplicate_percentages(Image_list_train, destination_path + 'Duplicate_evaluation.txt')
+combined_output.append("Duplicate Percentages:")
+combined_output.append(json.dumps(duplicate_percentages, indent=4))  
+
+# Join all the outputs with new lines separating them
+combined_output = "\n".join(combined_output)
+
+with open(destination_path+'Quality.txt', 'a') as f:
+    f.write(combined_output)
 
 
 # All comment below are for testing, validate and give an example of how to use the function

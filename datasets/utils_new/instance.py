@@ -248,4 +248,41 @@ def task_statistic(input_json, class_set, output_file):
         for i in range(num_tasks):
             out_file.write(f"  Task {i+1}: {len(selected_images_per_task[i])} images\n")
         out_file.write("\n")
+        # Calculate the percentage of duplicate images between task 2 and task 1, task 3 and task 2+1, task 4 and task 3+2+1
+        
 
+def calculate_duplicate_percentages(list_of_class, output_json):
+    """
+    Calculate duplicate percentages of images between sequential lists.
+    
+    Parameters:
+        list_of_class (list): List of JSON file paths (e.g., [list1, list2, list3, list4]).
+        output_json (str): Path to save the results as a JSON file.
+    
+    Returns:
+        dict: A dictionary containing the duplicate percentages for each list.
+    """
+    duplicate_stats = {}
+    all_images = set()  
+    
+    for i, list_path in enumerate(list_of_class):
+        # Load the current list of images
+        with open(list_path, 'r') as f:
+            current_list = json.load(f)
+        current_images = set(current_list)
+        if i == 0:
+            # The first list has no previous lists to compare to
+            duplicate_stats[f"Task_{i+1}"] = 0.0
+        else:
+            # Calculate duplicates as a percentage of the current list
+            duplicates = current_images & all_images
+            duplicate_percentage = (len(duplicates) / len(current_images)) * 100 if current_images else 0
+            duplicate_stats[f"Task_{i+1}"] = duplicate_percentage
+        # Update all_images to include current images for comparison with the next list
+        all_images.update(current_images)
+    
+    # Save the results to the output JSON file
+    with open(output_json, 'w') as f:
+        json.dump(duplicate_stats, f, indent=4)
+
+    return duplicate_stats

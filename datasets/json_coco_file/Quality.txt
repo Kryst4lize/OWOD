@@ -189,3 +189,12 @@ teddy bear: 161 / 191 (84.29%)
 hair drier: 8 / 11 (72.73%)
 Percentage of total instances of class_set chosen: 73.97%
 Percentage of total instances in the selected images list: 64.83%
+
+Duplicate Percentages:
+{
+    "Task_1": 0.0,
+    "Task_1": 0.0,
+    "Task_2": 0.0,
+    "Task_3": 0.67,
+    "Task_4": 0.715,
+}
