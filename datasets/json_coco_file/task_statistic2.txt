@@ -1,0 +1,115 @@
+Validation File before processing
+Class Set 1 - ['airplane', 'bicycle', 'bird', 'boat', 'bottle', 'bus', 'car', 'cat', 'chair', 'cow', 'dining table', 'dog', 'horse', 'motorcycle', 'person', 'potted plant', 'sheep', 'couch', 'train', 'tv'] Statistics:
+  dog: 218 / 218 (100.00%)
+  potted plant: 343 / 343 (100.00%)
+  tv: 288 / 288 (100.00%)
+  bird: 440 / 440 (100.00%)
+  cat: 202 / 202 (100.00%)
+  horse: 273 / 273 (100.00%)
+  sheep: 361 / 361 (100.00%)
+  cow: 380 / 380 (100.00%)
+  bottle: 1025 / 1025 (100.00%)
+  couch: 261 / 261 (100.00%)
+  chair: 1791 / 1791 (100.00%)
+  dining table: 697 / 697 (100.00%)
+  bicycle: 316 / 316 (100.00%)
+  car: 1932 / 1932 (100.00%)
+  motorcycle: 371 / 371 (100.00%)
+  airplane: 143 / 143 (100.00%)
+  bus: 285 / 285 (100.00%)
+  train: 190 / 190 (100.00%)
+  boat: 430 / 430 (100.00%)
+  person: 11004 / 11004 (100.00%)
+  Percentage of total instances of class_set chosen: 100.00%
+  Percentage of total instances in the selected images list: 61.86%
+  Total images selected for Task 1: 4031
+
+Class Set 2 - ['truck', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator'] Statistics:
+  stop sign: 75 / 75 (100.00%)
+  umbrella: 413 / 413 (100.00%)
+  tie: 254 / 254 (100.00%)
+  refrigerator: 126 / 126 (100.00%)
+  truck: 415 / 415 (100.00%)
+  traffic light: 637 / 637 (100.00%)
+  fire hydrant: 101 / 101 (100.00%)
+  parking meter: 60 / 60 (100.00%)
+  bench: 413 / 413 (100.00%)
+  microwave: 55 / 55 (100.00%)
+  oven: 143 / 143 (100.00%)
+  toaster: 9 / 9 (100.00%)
+  sink: 225 / 225 (100.00%)
+  backpack: 371 / 371 (100.00%)
+  handbag: 540 / 540 (100.00%)
+  suitcase: 303 / 303 (100.00%)
+  elephant: 255 / 255 (100.00%)
+  zebra: 268 / 268 (100.00%)
+  giraffe: 232 / 232 (100.00%)
+  bear: 71 / 71 (100.00%)
+  Percentage of total instances of class_set chosen: 100.00%
+  Percentage of total instances in the selected images list: 28.72%
+  Total images selected for Task 2: 1914
+
+Class Set 3 - ['frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake'] Statistics:
+  sandwich: 177 / 177 (100.00%)
+  frisbee: 115 / 115 (100.00%)
+  skis: 241 / 241 (100.00%)
+  snowboard: 69 / 69 (100.00%)
+  skateboard: 179 / 179 (100.00%)
+  surfboard: 269 / 269 (100.00%)
+  banana: 379 / 379 (100.00%)
+  apple: 239 / 239 (100.00%)
+  orange: 287 / 287 (100.00%)
+  broccoli: 316 / 316 (100.00%)
+  carrot: 371 / 371 (100.00%)
+  pizza: 285 / 285 (100.00%)
+  cake: 316 / 316 (100.00%)
+  kite: 336 / 336 (100.00%)
+  hot dog: 127 / 127 (100.00%)
+  donut: 338 / 338 (100.00%)
+  baseball bat: 146 / 146 (100.00%)
+  baseball glove: 148 / 148 (100.00%)
+  sports ball: 263 / 263 (100.00%)
+  tennis racket: 225 / 225 (100.00%)
+  Percentage of total instances of class_set chosen: 100.00%
+  Percentage of total instances in the selected images list: 34.03%
+  Total images selected for Task 3: 1642
+
+Class Set 4 - ['bed', 'toilet', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl'] Statistics:
+  bed: 163 / 163 (100.00%)
+  cell phone: 262 / 262 (100.00%)
+  clock: 267 / 267 (100.00%)
+  toothbrush: 57 / 57 (100.00%)
+  wine glass: 343 / 343 (100.00%)
+  cup: 899 / 899 (100.00%)
+  fork: 215 / 215 (100.00%)
+  knife: 326 / 326 (100.00%)
+  spoon: 253 / 253 (100.00%)
+  bowl: 626 / 626 (100.00%)
+  toilet: 179 / 179 (100.00%)
+  laptop: 231 / 231 (100.00%)
+  mouse: 106 / 106 (100.00%)
+  remote: 283 / 283 (100.00%)
+  keyboard: 153 / 153 (100.00%)
+  book: 1161 / 1161 (100.00%)
+  vase: 277 / 277 (100.00%)
+  scissors: 36 / 36 (100.00%)
+  teddy bear: 191 / 191 (100.00%)
+  hair drier: 11 / 11 (100.00%)
+  Percentage of total instances of class_set chosen: 100.00%
+  Percentage of total instances in the selected images list: 39.58%
+  Total images selected for Task 4: 1738
+
+Image Duplication between Tasks:
+  Duplication between Task 1 and Task 2: 1436 duplicate images
+  Duplication between Task 1 and Task 3: 1436 duplicate images
+  Duplication between Task 1 and Task 4: 1340 duplicate images
+  Duplication between Task 2 and Task 3: 299 duplicate images
+  Duplication between Task 2 and Task 4: 462 duplicate images
+  Duplication between Task 3 and Task 4: 458 duplicate images
+
+Total Images Selected Per Task:
+  Task 1: 4031 images
+  Task 2: 1914 images
+  Task 3: 1642 images
+  Task 4: 1738 images
+

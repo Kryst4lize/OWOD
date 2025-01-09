@@ -1,0 +1,978 @@
+Task
+Category Name: unknown, Category ID: 1, Total Instances: 206481
+Task
+Category Name: person, Category ID: 14, Total Instances: 4134
+Category Name: bicycle, Category ID: 1, Total Instances: 119
+Category Name: car, Category ID: 6, Total Instances: 787
+Category Name: motorcycle, Category ID: 13, Total Instances: 48
+Category Name: airplane, Category ID: 0, Total Instances: 28
+Category Name: bus, Category ID: 5, Total Instances: 86
+Category Name: train, Category ID: 18, Total Instances: 36
+Category Name: truck, Category ID: 20, Total Instances: 0
+Category Name: boat, Category ID: 3, Total Instances: 67
+Category Name: traffic light, Category ID: 21, Total Instances: 0
+Category Name: fire hydrant, Category ID: 22, Total Instances: 0
+Category Name: stop sign, Category ID: 23, Total Instances: 0
+Category Name: parking meter, Category ID: 24, Total Instances: 0
+Category Name: bench, Category ID: 25, Total Instances: 0
+Category Name: bird, Category ID: 2, Total Instances: 71
+Category Name: cat, Category ID: 7, Total Instances: 38
+Category Name: dog, Category ID: 11, Total Instances: 73
+Category Name: horse, Category ID: 12, Total Instances: 20
+Category Name: sheep, Category ID: 16, Total Instances: 12
+Category Name: cow, Category ID: 9, Total Instances: 33
+Category Name: elephant, Category ID: 26, Total Instances: 0
+Category Name: bear, Category ID: 27, Total Instances: 0
+Category Name: zebra, Category ID: 28, Total Instances: 0
+Category Name: giraffe, Category ID: 29, Total Instances: 0
+Category Name: backpack, Category ID: 30, Total Instances: 0
+Category Name: umbrella, Category ID: 31, Total Instances: 0
+Category Name: handbag, Category ID: 32, Total Instances: 0
+Category Name: tie, Category ID: 33, Total Instances: 0
+Category Name: suitcase, Category ID: 34, Total Instances: 0
+Category Name: frisbee, Category ID: 40, Total Instances: 0
+Category Name: skis, Category ID: 41, Total Instances: 0
+Category Name: snowboard, Category ID: 42, Total Instances: 0
+Category Name: sports ball, Category ID: 43, Total Instances: 0
+Category Name: kite, Category ID: 44, Total Instances: 0
+Category Name: baseball bat, Category ID: 45, Total Instances: 0
+Category Name: baseball glove, Category ID: 46, Total Instances: 0
+Category Name: skateboard, Category ID: 47, Total Instances: 0
+Category Name: surfboard, Category ID: 48, Total Instances: 0
+Category Name: tennis racket, Category ID: 49, Total Instances: 0
+Category Name: bottle, Category ID: 4, Total Instances: 350
+Category Name: wine glass, Category ID: 74, Total Instances: 0
+Category Name: cup, Category ID: 75, Total Instances: 0
+Category Name: fork, Category ID: 76, Total Instances: 0
+Category Name: knife, Category ID: 77, Total Instances: 0
+Category Name: spoon, Category ID: 78, Total Instances: 0
+Category Name: bowl, Category ID: 79, Total Instances: 0
+Category Name: banana, Category ID: 50, Total Instances: 0
+Category Name: apple, Category ID: 51, Total Instances: 0
+Category Name: sandwich, Category ID: 52, Total Instances: 0
+Category Name: orange, Category ID: 53, Total Instances: 0
+Category Name: broccoli, Category ID: 54, Total Instances: 0
+Category Name: carrot, Category ID: 55, Total Instances: 0
+Category Name: hot dog, Category ID: 56, Total Instances: 0
+Category Name: pizza, Category ID: 57, Total Instances: 0
+Category Name: donut, Category ID: 58, Total Instances: 0
+Category Name: cake, Category ID: 59, Total Instances: 0
+Category Name: chair, Category ID: 8, Total Instances: 656
+Category Name: couch, Category ID: 17, Total Instances: 96
+Category Name: potted plant, Category ID: 15, Total Instances: 127
+Category Name: bed, Category ID: 60, Total Instances: 0
+Category Name: dining table, Category ID: 10, Total Instances: 181
+Category Name: toilet, Category ID: 61, Total Instances: 0
+Category Name: tv, Category ID: 19, Total Instances: 77
+Category Name: laptop, Category ID: 62, Total Instances: 0
+Category Name: mouse, Category ID: 63, Total Instances: 0
+Category Name: remote, Category ID: 64, Total Instances: 0
+Category Name: keyboard, Category ID: 65, Total Instances: 0
+Category Name: cell phone, Category ID: 66, Total Instances: 0
+Category Name: microwave, Category ID: 35, Total Instances: 0
+Category Name: oven, Category ID: 36, Total Instances: 0
+Category Name: toaster, Category ID: 37, Total Instances: 0
+Category Name: sink, Category ID: 38, Total Instances: 0
+Category Name: refrigerator, Category ID: 39, Total Instances: 0
+Category Name: book, Category ID: 67, Total Instances: 0
+Category Name: clock, Category ID: 68, Total Instances: 0
+Category Name: vase, Category ID: 69, Total Instances: 0
+Category Name: scissors, Category ID: 70, Total Instances: 0
+Category Name: teddy bear, Category ID: 71, Total Instances: 0
+Category Name: hair drier, Category ID: 72, Total Instances: 0
+Category Name: toothbrush, Category ID: 73, Total Instances: 0
+Category Name: unknown, Category ID: 80, Total Instances: 2792
+Task
+Category Name: person, Category ID: 14, Total Instances: 136840
+Category Name: bicycle, Category ID: 1, Total Instances: 5179
+Category Name: car, Category ID: 6, Total Instances: 27223
+Category Name: motorcycle, Category ID: 13, Total Instances: 7743
+Category Name: airplane, Category ID: 0, Total Instances: 4179
+Category Name: bus, Category ID: 5, Total Instances: 4529
+Category Name: train, Category ID: 18, Total Instances: 3512
+Category Name: truck, Category ID: 20, Total Instances: 0
+Category Name: boat, Category ID: 3, Total Instances: 9537
+Category Name: traffic light, Category ID: 21, Total Instances: 0
+Category Name: fire hydrant, Category ID: 22, Total Instances: 0
+Category Name: stop sign, Category ID: 23, Total Instances: 0
+Category Name: parking meter, Category ID: 24, Total Instances: 0
+Category Name: bench, Category ID: 25, Total Instances: 0
+Category Name: bird, Category ID: 2, Total Instances: 9300
+Category Name: cat, Category ID: 7, Total Instances: 2082
+Category Name: dog, Category ID: 11, Total Instances: 3177
+Category Name: horse, Category ID: 12, Total Instances: 6117
+Category Name: sheep, Category ID: 16, Total Instances: 9359
+Category Name: cow, Category ID: 9, Total Instances: 7892
+Category Name: elephant, Category ID: 26, Total Instances: 0
+Category Name: bear, Category ID: 27, Total Instances: 0
+Category Name: zebra, Category ID: 28, Total Instances: 0
+Category Name: giraffe, Category ID: 29, Total Instances: 0
+Category Name: backpack, Category ID: 30, Total Instances: 0
+Category Name: umbrella, Category ID: 31, Total Instances: 0
+Category Name: handbag, Category ID: 32, Total Instances: 0
+Category Name: tie, Category ID: 33, Total Instances: 0
+Category Name: suitcase, Category ID: 34, Total Instances: 0
+Category Name: frisbee, Category ID: 40, Total Instances: 0
+Category Name: skis, Category ID: 41, Total Instances: 0
+Category Name: snowboard, Category ID: 42, Total Instances: 0
+Category Name: sports ball, Category ID: 43, Total Instances: 0
+Category Name: kite, Category ID: 44, Total Instances: 0
+Category Name: baseball bat, Category ID: 45, Total Instances: 0
+Category Name: baseball glove, Category ID: 46, Total Instances: 0
+Category Name: skateboard, Category ID: 47, Total Instances: 0
+Category Name: surfboard, Category ID: 48, Total Instances: 0
+Category Name: tennis racket, Category ID: 49, Total Instances: 0
+Category Name: bottle, Category ID: 4, Total Instances: 8616
+Category Name: wine glass, Category ID: 74, Total Instances: 0
+Category Name: cup, Category ID: 75, Total Instances: 0
+Category Name: fork, Category ID: 76, Total Instances: 0
+Category Name: knife, Category ID: 77, Total Instances: 0
+Category Name: spoon, Category ID: 78, Total Instances: 0
+Category Name: bowl, Category ID: 79, Total Instances: 0
+Category Name: banana, Category ID: 50, Total Instances: 0
+Category Name: apple, Category ID: 51, Total Instances: 0
+Category Name: sandwich, Category ID: 52, Total Instances: 0
+Category Name: orange, Category ID: 53, Total Instances: 0
+Category Name: broccoli, Category ID: 54, Total Instances: 0
+Category Name: carrot, Category ID: 55, Total Instances: 0
+Category Name: hot dog, Category ID: 56, Total Instances: 0
+Category Name: pizza, Category ID: 57, Total Instances: 0
+Category Name: donut, Category ID: 58, Total Instances: 0
+Category Name: cake, Category ID: 59, Total Instances: 0
+Category Name: chair, Category ID: 8, Total Instances: 21104
+Category Name: couch, Category ID: 17, Total Instances: 2013
+Category Name: potted plant, Category ID: 15, Total Instances: 4000
+Category Name: bed, Category ID: 60, Total Instances: 0
+Category Name: dining table, Category ID: 10, Total Instances: 4833
+Category Name: toilet, Category ID: 61, Total Instances: 0
+Category Name: tv, Category ID: 19, Total Instances: 1789
+Category Name: laptop, Category ID: 62, Total Instances: 0
+Category Name: mouse, Category ID: 63, Total Instances: 0
+Category Name: remote, Category ID: 64, Total Instances: 0
+Category Name: keyboard, Category ID: 65, Total Instances: 0
+Category Name: cell phone, Category ID: 66, Total Instances: 0
+Category Name: microwave, Category ID: 35, Total Instances: 0
+Category Name: oven, Category ID: 36, Total Instances: 0
+Category Name: toaster, Category ID: 37, Total Instances: 0
+Category Name: sink, Category ID: 38, Total Instances: 0
+Category Name: refrigerator, Category ID: 39, Total Instances: 0
+Category Name: book, Category ID: 67, Total Instances: 0
+Category Name: clock, Category ID: 68, Total Instances: 0
+Category Name: vase, Category ID: 69, Total Instances: 0
+Category Name: scissors, Category ID: 70, Total Instances: 0
+Category Name: teddy bear, Category ID: 71, Total Instances: 0
+Category Name: hair drier, Category ID: 72, Total Instances: 0
+Category Name: toothbrush, Category ID: 73, Total Instances: 0
+Task
+Category Name: person, Category ID: 14, Total Instances: 0
+Category Name: bicycle, Category ID: 1, Total Instances: 0
+Category Name: car, Category ID: 6, Total Instances: 0
+Category Name: motorcycle, Category ID: 13, Total Instances: 0
+Category Name: airplane, Category ID: 0, Total Instances: 0
+Category Name: bus, Category ID: 5, Total Instances: 0
+Category Name: train, Category ID: 18, Total Instances: 0
+Category Name: truck, Category ID: 20, Total Instances: 239
+Category Name: boat, Category ID: 3, Total Instances: 0
+Category Name: traffic light, Category ID: 21, Total Instances: 461
+Category Name: fire hydrant, Category ID: 22, Total Instances: 66
+Category Name: stop sign, Category ID: 23, Total Instances: 49
+Category Name: parking meter, Category ID: 24, Total Instances: 49
+Category Name: bench, Category ID: 25, Total Instances: 246
+Category Name: bird, Category ID: 2, Total Instances: 0
+Category Name: cat, Category ID: 7, Total Instances: 0
+Category Name: dog, Category ID: 11, Total Instances: 0
+Category Name: horse, Category ID: 12, Total Instances: 0
+Category Name: sheep, Category ID: 16, Total Instances: 0
+Category Name: cow, Category ID: 9, Total Instances: 0
+Category Name: elephant, Category ID: 26, Total Instances: 238
+Category Name: bear, Category ID: 27, Total Instances: 68
+Category Name: zebra, Category ID: 28, Total Instances: 261
+Category Name: giraffe, Category ID: 29, Total Instances: 224
+Category Name: backpack, Category ID: 30, Total Instances: 167
+Category Name: umbrella, Category ID: 31, Total Instances: 248
+Category Name: handbag, Category ID: 32, Total Instances: 221
+Category Name: tie, Category ID: 33, Total Instances: 128
+Category Name: suitcase, Category ID: 34, Total Instances: 257
+Category Name: frisbee, Category ID: 40, Total Instances: 0
+Category Name: skis, Category ID: 41, Total Instances: 0
+Category Name: snowboard, Category ID: 42, Total Instances: 0
+Category Name: sports ball, Category ID: 43, Total Instances: 0
+Category Name: kite, Category ID: 44, Total Instances: 0
+Category Name: baseball bat, Category ID: 45, Total Instances: 0
+Category Name: baseball glove, Category ID: 46, Total Instances: 0
+Category Name: skateboard, Category ID: 47, Total Instances: 0
+Category Name: surfboard, Category ID: 48, Total Instances: 0
+Category Name: tennis racket, Category ID: 49, Total Instances: 0
+Category Name: bottle, Category ID: 4, Total Instances: 0
+Category Name: wine glass, Category ID: 74, Total Instances: 0
+Category Name: cup, Category ID: 75, Total Instances: 0
+Category Name: fork, Category ID: 76, Total Instances: 0
+Category Name: knife, Category ID: 77, Total Instances: 0
+Category Name: spoon, Category ID: 78, Total Instances: 0
+Category Name: bowl, Category ID: 79, Total Instances: 0
+Category Name: banana, Category ID: 50, Total Instances: 0
+Category Name: apple, Category ID: 51, Total Instances: 0
+Category Name: sandwich, Category ID: 52, Total Instances: 0
+Category Name: orange, Category ID: 53, Total Instances: 0
+Category Name: broccoli, Category ID: 54, Total Instances: 0
+Category Name: carrot, Category ID: 55, Total Instances: 0
+Category Name: hot dog, Category ID: 56, Total Instances: 0
+Category Name: pizza, Category ID: 57, Total Instances: 0
+Category Name: donut, Category ID: 58, Total Instances: 0
+Category Name: cake, Category ID: 59, Total Instances: 0
+Category Name: chair, Category ID: 8, Total Instances: 0
+Category Name: couch, Category ID: 17, Total Instances: 0
+Category Name: potted plant, Category ID: 15, Total Instances: 0
+Category Name: bed, Category ID: 60, Total Instances: 0
+Category Name: dining table, Category ID: 10, Total Instances: 0
+Category Name: toilet, Category ID: 61, Total Instances: 0
+Category Name: tv, Category ID: 19, Total Instances: 0
+Category Name: laptop, Category ID: 62, Total Instances: 0
+Category Name: mouse, Category ID: 63, Total Instances: 0
+Category Name: remote, Category ID: 64, Total Instances: 0
+Category Name: keyboard, Category ID: 65, Total Instances: 0
+Category Name: cell phone, Category ID: 66, Total Instances: 0
+Category Name: microwave, Category ID: 35, Total Instances: 27
+Category Name: oven, Category ID: 36, Total Instances: 55
+Category Name: toaster, Category ID: 37, Total Instances: 4
+Category Name: sink, Category ID: 38, Total Instances: 138
+Category Name: refrigerator, Category ID: 39, Total Instances: 62
+Category Name: book, Category ID: 67, Total Instances: 0
+Category Name: clock, Category ID: 68, Total Instances: 0
+Category Name: vase, Category ID: 69, Total Instances: 0
+Category Name: scissors, Category ID: 70, Total Instances: 0
+Category Name: teddy bear, Category ID: 71, Total Instances: 0
+Category Name: hair drier, Category ID: 72, Total Instances: 0
+Category Name: toothbrush, Category ID: 73, Total Instances: 0
+Category Name: unknown, Category ID: 80, Total Instances: 2206
+Task
+Category Name: person, Category ID: 14, Total Instances: 17562
+Category Name: bicycle, Category ID: 1, Total Instances: 403
+Category Name: car, Category ID: 6, Total Instances: 5398
+Category Name: motorcycle, Category ID: 13, Total Instances: 218
+Category Name: airplane, Category ID: 0, Total Instances: 428
+Category Name: bus, Category ID: 5, Total Instances: 492
+Category Name: train, Category ID: 18, Total Instances: 517
+Category Name: truck, Category ID: 20, Total Instances: 3968
+Category Name: boat, Category ID: 3, Total Instances: 219
+Category Name: traffic light, Category ID: 21, Total Instances: 7522
+Category Name: fire hydrant, Category ID: 22, Total Instances: 1144
+Category Name: stop sign, Category ID: 23, Total Instances: 1190
+Category Name: parking meter, Category ID: 24, Total Instances: 797
+Category Name: bench, Category ID: 25, Total Instances: 4312
+Category Name: bird, Category ID: 2, Total Instances: 440
+Category Name: cat, Category ID: 7, Total Instances: 392
+Category Name: dog, Category ID: 11, Total Instances: 266
+Category Name: horse, Category ID: 12, Total Instances: 87
+Category Name: sheep, Category ID: 16, Total Instances: 28
+Category Name: cow, Category ID: 9, Total Instances: 99
+Category Name: elephant, Category ID: 26, Total Instances: 4618
+Category Name: bear, Category ID: 27, Total Instances: 1195
+Category Name: zebra, Category ID: 28, Total Instances: 5126
+Category Name: giraffe, Category ID: 29, Total Instances: 4772
+Category Name: backpack, Category ID: 30, Total Instances: 2668
+Category Name: umbrella, Category ID: 31, Total Instances: 5932
+Category Name: handbag, Category ID: 32, Total Instances: 4099
+Category Name: tie, Category ID: 33, Total Instances: 2493
+Category Name: suitcase, Category ID: 34, Total Instances: 4782
+Category Name: frisbee, Category ID: 40, Total Instances: 0
+Category Name: skis, Category ID: 41, Total Instances: 0
+Category Name: snowboard, Category ID: 42, Total Instances: 0
+Category Name: sports ball, Category ID: 43, Total Instances: 0
+Category Name: kite, Category ID: 44, Total Instances: 0
+Category Name: baseball bat, Category ID: 45, Total Instances: 0
+Category Name: baseball glove, Category ID: 46, Total Instances: 0
+Category Name: skateboard, Category ID: 47, Total Instances: 0
+Category Name: surfboard, Category ID: 48, Total Instances: 0
+Category Name: tennis racket, Category ID: 49, Total Instances: 0
+Category Name: bottle, Category ID: 4, Total Instances: 554
+Category Name: wine glass, Category ID: 74, Total Instances: 0
+Category Name: cup, Category ID: 75, Total Instances: 0
+Category Name: fork, Category ID: 76, Total Instances: 0
+Category Name: knife, Category ID: 77, Total Instances: 0
+Category Name: spoon, Category ID: 78, Total Instances: 0
+Category Name: bowl, Category ID: 79, Total Instances: 0
+Category Name: banana, Category ID: 50, Total Instances: 0
+Category Name: apple, Category ID: 51, Total Instances: 0
+Category Name: sandwich, Category ID: 52, Total Instances: 0
+Category Name: orange, Category ID: 53, Total Instances: 0
+Category Name: broccoli, Category ID: 54, Total Instances: 0
+Category Name: carrot, Category ID: 55, Total Instances: 0
+Category Name: hot dog, Category ID: 56, Total Instances: 0
+Category Name: pizza, Category ID: 57, Total Instances: 0
+Category Name: donut, Category ID: 58, Total Instances: 0
+Category Name: cake, Category ID: 59, Total Instances: 0
+Category Name: chair, Category ID: 8, Total Instances: 1009
+Category Name: couch, Category ID: 17, Total Instances: 69
+Category Name: potted plant, Category ID: 15, Total Instances: 414
+Category Name: bed, Category ID: 60, Total Instances: 0
+Category Name: dining table, Category ID: 10, Total Instances: 290
+Category Name: toilet, Category ID: 61, Total Instances: 0
+Category Name: tv, Category ID: 19, Total Instances: 145
+Category Name: laptop, Category ID: 62, Total Instances: 0
+Category Name: mouse, Category ID: 63, Total Instances: 0
+Category Name: remote, Category ID: 64, Total Instances: 0
+Category Name: keyboard, Category ID: 65, Total Instances: 0
+Category Name: cell phone, Category ID: 66, Total Instances: 0
+Category Name: microwave, Category ID: 35, Total Instances: 720
+Category Name: oven, Category ID: 36, Total Instances: 1245
+Category Name: toaster, Category ID: 37, Total Instances: 68
+Category Name: sink, Category ID: 38, Total Instances: 2541
+Category Name: refrigerator, Category ID: 39, Total Instances: 1024
+Category Name: book, Category ID: 67, Total Instances: 0
+Category Name: clock, Category ID: 68, Total Instances: 0
+Category Name: vase, Category ID: 69, Total Instances: 0
+Category Name: scissors, Category ID: 70, Total Instances: 0
+Category Name: teddy bear, Category ID: 71, Total Instances: 0
+Category Name: hair drier, Category ID: 72, Total Instances: 0
+Category Name: toothbrush, Category ID: 73, Total Instances: 0
+Task
+Category Name: person, Category ID: 14, Total Instances: 0
+Category Name: bicycle, Category ID: 1, Total Instances: 0
+Category Name: car, Category ID: 6, Total Instances: 0
+Category Name: motorcycle, Category ID: 13, Total Instances: 0
+Category Name: airplane, Category ID: 0, Total Instances: 0
+Category Name: bus, Category ID: 5, Total Instances: 0
+Category Name: train, Category ID: 18, Total Instances: 0
+Category Name: truck, Category ID: 20, Total Instances: 0
+Category Name: boat, Category ID: 3, Total Instances: 0
+Category Name: traffic light, Category ID: 21, Total Instances: 0
+Category Name: fire hydrant, Category ID: 22, Total Instances: 0
+Category Name: stop sign, Category ID: 23, Total Instances: 0
+Category Name: parking meter, Category ID: 24, Total Instances: 0
+Category Name: bench, Category ID: 25, Total Instances: 0
+Category Name: bird, Category ID: 2, Total Instances: 0
+Category Name: cat, Category ID: 7, Total Instances: 0
+Category Name: dog, Category ID: 11, Total Instances: 0
+Category Name: horse, Category ID: 12, Total Instances: 0
+Category Name: sheep, Category ID: 16, Total Instances: 0
+Category Name: cow, Category ID: 9, Total Instances: 0
+Category Name: elephant, Category ID: 26, Total Instances: 0
+Category Name: bear, Category ID: 27, Total Instances: 0
+Category Name: zebra, Category ID: 28, Total Instances: 0
+Category Name: giraffe, Category ID: 29, Total Instances: 0
+Category Name: backpack, Category ID: 30, Total Instances: 0
+Category Name: umbrella, Category ID: 31, Total Instances: 0
+Category Name: handbag, Category ID: 32, Total Instances: 0
+Category Name: tie, Category ID: 33, Total Instances: 0
+Category Name: suitcase, Category ID: 34, Total Instances: 0
+Category Name: frisbee, Category ID: 40, Total Instances: 57
+Category Name: skis, Category ID: 41, Total Instances: 178
+Category Name: snowboard, Category ID: 42, Total Instances: 61
+Category Name: sports ball, Category ID: 43, Total Instances: 183
+Category Name: kite, Category ID: 44, Total Instances: 262
+Category Name: baseball bat, Category ID: 45, Total Instances: 81
+Category Name: baseball glove, Category ID: 46, Total Instances: 82
+Category Name: skateboard, Category ID: 47, Total Instances: 102
+Category Name: surfboard, Category ID: 48, Total Instances: 225
+Category Name: tennis racket, Category ID: 49, Total Instances: 145
+Category Name: bottle, Category ID: 4, Total Instances: 0
+Category Name: wine glass, Category ID: 74, Total Instances: 0
+Category Name: cup, Category ID: 75, Total Instances: 0
+Category Name: fork, Category ID: 76, Total Instances: 0
+Category Name: knife, Category ID: 77, Total Instances: 0
+Category Name: spoon, Category ID: 78, Total Instances: 0
+Category Name: bowl, Category ID: 79, Total Instances: 0
+Category Name: banana, Category ID: 50, Total Instances: 352
+Category Name: apple, Category ID: 51, Total Instances: 196
+Category Name: sandwich, Category ID: 52, Total Instances: 128
+Category Name: orange, Category ID: 53, Total Instances: 245
+Category Name: broccoli, Category ID: 54, Total Instances: 297
+Category Name: carrot, Category ID: 55, Total Instances: 342
+Category Name: hot dog, Category ID: 56, Total Instances: 101
+Category Name: pizza, Category ID: 57, Total Instances: 130
+Category Name: donut, Category ID: 58, Total Instances: 316
+Category Name: cake, Category ID: 59, Total Instances: 229
+Category Name: chair, Category ID: 8, Total Instances: 0
+Category Name: couch, Category ID: 17, Total Instances: 0
+Category Name: potted plant, Category ID: 15, Total Instances: 0
+Category Name: bed, Category ID: 60, Total Instances: 0
+Category Name: dining table, Category ID: 10, Total Instances: 0
+Category Name: toilet, Category ID: 61, Total Instances: 0
+Category Name: tv, Category ID: 19, Total Instances: 0
+Category Name: laptop, Category ID: 62, Total Instances: 0
+Category Name: mouse, Category ID: 63, Total Instances: 0
+Category Name: remote, Category ID: 64, Total Instances: 0
+Category Name: keyboard, Category ID: 65, Total Instances: 0
+Category Name: cell phone, Category ID: 66, Total Instances: 0
+Category Name: microwave, Category ID: 35, Total Instances: 0
+Category Name: oven, Category ID: 36, Total Instances: 0
+Category Name: toaster, Category ID: 37, Total Instances: 0
+Category Name: sink, Category ID: 38, Total Instances: 0
+Category Name: refrigerator, Category ID: 39, Total Instances: 0
+Category Name: book, Category ID: 67, Total Instances: 0
+Category Name: clock, Category ID: 68, Total Instances: 0
+Category Name: vase, Category ID: 69, Total Instances: 0
+Category Name: scissors, Category ID: 70, Total Instances: 0
+Category Name: teddy bear, Category ID: 71, Total Instances: 0
+Category Name: hair drier, Category ID: 72, Total Instances: 0
+Category Name: toothbrush, Category ID: 73, Total Instances: 0
+Category Name: unknown, Category ID: 80, Total Instances: 2542
+Task
+Category Name: person, Category ID: 14, Total Instances: 27463
+Category Name: bicycle, Category ID: 1, Total Instances: 130
+Category Name: car, Category ID: 6, Total Instances: 489
+Category Name: motorcycle, Category ID: 13, Total Instances: 44
+Category Name: airplane, Category ID: 0, Total Instances: 12
+Category Name: bus, Category ID: 5, Total Instances: 31
+Category Name: train, Category ID: 18, Total Instances: 11
+Category Name: truck, Category ID: 20, Total Instances: 151
+Category Name: boat, Category ID: 3, Total Instances: 138
+Category Name: traffic light, Category ID: 21, Total Instances: 13
+Category Name: fire hydrant, Category ID: 22, Total Instances: 7
+Category Name: stop sign, Category ID: 23, Total Instances: 6
+Category Name: parking meter, Category ID: 24, Total Instances: 0
+Category Name: bench, Category ID: 25, Total Instances: 241
+Category Name: bird, Category ID: 2, Total Instances: 129
+Category Name: cat, Category ID: 7, Total Instances: 67
+Category Name: dog, Category ID: 11, Total Instances: 445
+Category Name: horse, Category ID: 12, Total Instances: 19
+Category Name: sheep, Category ID: 16, Total Instances: 9
+Category Name: cow, Category ID: 9, Total Instances: 4
+Category Name: elephant, Category ID: 26, Total Instances: 22
+Category Name: bear, Category ID: 27, Total Instances: 33
+Category Name: zebra, Category ID: 28, Total Instances: 2
+Category Name: giraffe, Category ID: 29, Total Instances: 0
+Category Name: backpack, Category ID: 30, Total Instances: 329
+Category Name: umbrella, Category ID: 31, Total Instances: 182
+Category Name: handbag, Category ID: 32, Total Instances: 294
+Category Name: tie, Category ID: 33, Total Instances: 52
+Category Name: suitcase, Category ID: 34, Total Instances: 11
+Category Name: frisbee, Category ID: 40, Total Instances: 1042
+Category Name: skis, Category ID: 41, Total Instances: 3548
+Category Name: snowboard, Category ID: 42, Total Instances: 1676
+Category Name: sports ball, Category ID: 43, Total Instances: 3892
+Category Name: kite, Category ID: 44, Total Instances: 6274
+Category Name: baseball bat, Category ID: 45, Total Instances: 1297
+Category Name: baseball glove, Category ID: 46, Total Instances: 1563
+Category Name: skateboard, Category ID: 47, Total Instances: 1984
+Category Name: surfboard, Category ID: 48, Total Instances: 4110
+Category Name: tennis racket, Category ID: 49, Total Instances: 2890
+Category Name: bottle, Category ID: 4, Total Instances: 1273
+Category Name: wine glass, Category ID: 74, Total Instances: 0
+Category Name: cup, Category ID: 75, Total Instances: 0
+Category Name: fork, Category ID: 76, Total Instances: 0
+Category Name: knife, Category ID: 77, Total Instances: 0
+Category Name: spoon, Category ID: 78, Total Instances: 0
+Category Name: bowl, Category ID: 79, Total Instances: 0
+Category Name: banana, Category ID: 50, Total Instances: 8344
+Category Name: apple, Category ID: 51, Total Instances: 4911
+Category Name: sandwich, Category ID: 52, Total Instances: 2457
+Category Name: orange, Category ID: 53, Total Instances: 5547
+Category Name: broccoli, Category ID: 54, Total Instances: 6728
+Category Name: carrot, Category ID: 55, Total Instances: 7076
+Category Name: hot dog, Category ID: 56, Total Instances: 2064
+Category Name: pizza, Category ID: 57, Total Instances: 2575
+Category Name: donut, Category ID: 58, Total Instances: 6262
+Category Name: cake, Category ID: 59, Total Instances: 3618
+Category Name: chair, Category ID: 8, Total Instances: 740
+Category Name: couch, Category ID: 17, Total Instances: 52
+Category Name: potted plant, Category ID: 15, Total Instances: 149
+Category Name: bed, Category ID: 60, Total Instances: 0
+Category Name: dining table, Category ID: 10, Total Instances: 2379
+Category Name: toilet, Category ID: 61, Total Instances: 0
+Category Name: tv, Category ID: 19, Total Instances: 46
+Category Name: laptop, Category ID: 62, Total Instances: 0
+Category Name: mouse, Category ID: 63, Total Instances: 0
+Category Name: remote, Category ID: 64, Total Instances: 0
+Category Name: keyboard, Category ID: 65, Total Instances: 0
+Category Name: cell phone, Category ID: 66, Total Instances: 0
+Category Name: microwave, Category ID: 35, Total Instances: 50
+Category Name: oven, Category ID: 36, Total Instances: 272
+Category Name: toaster, Category ID: 37, Total Instances: 7
+Category Name: sink, Category ID: 38, Total Instances: 81
+Category Name: refrigerator, Category ID: 39, Total Instances: 73
+Category Name: book, Category ID: 67, Total Instances: 0
+Category Name: clock, Category ID: 68, Total Instances: 0
+Category Name: vase, Category ID: 69, Total Instances: 0
+Category Name: scissors, Category ID: 70, Total Instances: 0
+Category Name: teddy bear, Category ID: 71, Total Instances: 0
+Category Name: hair drier, Category ID: 72, Total Instances: 0
+Category Name: toothbrush, Category ID: 73, Total Instances: 0
+Task
+Category Name: person, Category ID: 14, Total Instances: 0
+Category Name: bicycle, Category ID: 1, Total Instances: 0
+Category Name: car, Category ID: 6, Total Instances: 0
+Category Name: motorcycle, Category ID: 13, Total Instances: 0
+Category Name: airplane, Category ID: 0, Total Instances: 0
+Category Name: bus, Category ID: 5, Total Instances: 0
+Category Name: train, Category ID: 18, Total Instances: 0
+Category Name: truck, Category ID: 20, Total Instances: 0
+Category Name: boat, Category ID: 3, Total Instances: 0
+Category Name: traffic light, Category ID: 21, Total Instances: 0
+Category Name: fire hydrant, Category ID: 22, Total Instances: 0
+Category Name: stop sign, Category ID: 23, Total Instances: 0
+Category Name: parking meter, Category ID: 24, Total Instances: 0
+Category Name: bench, Category ID: 25, Total Instances: 0
+Category Name: bird, Category ID: 2, Total Instances: 0
+Category Name: cat, Category ID: 7, Total Instances: 0
+Category Name: dog, Category ID: 11, Total Instances: 0
+Category Name: horse, Category ID: 12, Total Instances: 0
+Category Name: sheep, Category ID: 16, Total Instances: 0
+Category Name: cow, Category ID: 9, Total Instances: 0
+Category Name: elephant, Category ID: 26, Total Instances: 0
+Category Name: bear, Category ID: 27, Total Instances: 0
+Category Name: zebra, Category ID: 28, Total Instances: 0
+Category Name: giraffe, Category ID: 29, Total Instances: 0
+Category Name: backpack, Category ID: 30, Total Instances: 0
+Category Name: umbrella, Category ID: 31, Total Instances: 0
+Category Name: handbag, Category ID: 32, Total Instances: 0
+Category Name: tie, Category ID: 33, Total Instances: 0
+Category Name: suitcase, Category ID: 34, Total Instances: 0
+Category Name: frisbee, Category ID: 40, Total Instances: 0
+Category Name: skis, Category ID: 41, Total Instances: 0
+Category Name: snowboard, Category ID: 42, Total Instances: 0
+Category Name: sports ball, Category ID: 43, Total Instances: 0
+Category Name: kite, Category ID: 44, Total Instances: 0
+Category Name: baseball bat, Category ID: 45, Total Instances: 0
+Category Name: baseball glove, Category ID: 46, Total Instances: 0
+Category Name: skateboard, Category ID: 47, Total Instances: 0
+Category Name: surfboard, Category ID: 48, Total Instances: 0
+Category Name: tennis racket, Category ID: 49, Total Instances: 0
+Category Name: bottle, Category ID: 4, Total Instances: 0
+Category Name: wine glass, Category ID: 74, Total Instances: 217
+Category Name: cup, Category ID: 75, Total Instances: 630
+Category Name: fork, Category ID: 76, Total Instances: 130
+Category Name: knife, Category ID: 77, Total Instances: 208
+Category Name: spoon, Category ID: 78, Total Instances: 183
+Category Name: bowl, Category ID: 79, Total Instances: 396
+Category Name: banana, Category ID: 50, Total Instances: 0
+Category Name: apple, Category ID: 51, Total Instances: 0
+Category Name: sandwich, Category ID: 52, Total Instances: 0
+Category Name: orange, Category ID: 53, Total Instances: 0
+Category Name: broccoli, Category ID: 54, Total Instances: 0
+Category Name: carrot, Category ID: 55, Total Instances: 0
+Category Name: hot dog, Category ID: 56, Total Instances: 0
+Category Name: pizza, Category ID: 57, Total Instances: 0
+Category Name: donut, Category ID: 58, Total Instances: 0
+Category Name: cake, Category ID: 59, Total Instances: 0
+Category Name: chair, Category ID: 8, Total Instances: 0
+Category Name: couch, Category ID: 17, Total Instances: 0
+Category Name: potted plant, Category ID: 15, Total Instances: 0
+Category Name: bed, Category ID: 60, Total Instances: 125
+Category Name: dining table, Category ID: 10, Total Instances: 0
+Category Name: toilet, Category ID: 61, Total Instances: 140
+Category Name: tv, Category ID: 19, Total Instances: 0
+Category Name: laptop, Category ID: 62, Total Instances: 172
+Category Name: mouse, Category ID: 63, Total Instances: 94
+Category Name: remote, Category ID: 64, Total Instances: 202
+Category Name: keyboard, Category ID: 65, Total Instances: 142
+Category Name: cell phone, Category ID: 66, Total Instances: 129
+Category Name: microwave, Category ID: 35, Total Instances: 0
+Category Name: oven, Category ID: 36, Total Instances: 0
+Category Name: toaster, Category ID: 37, Total Instances: 0
+Category Name: sink, Category ID: 38, Total Instances: 0
+Category Name: refrigerator, Category ID: 39, Total Instances: 0
+Category Name: book, Category ID: 67, Total Instances: 1077
+Category Name: clock, Category ID: 68, Total Instances: 173
+Category Name: vase, Category ID: 69, Total Instances: 201
+Category Name: scissors, Category ID: 70, Total Instances: 29
+Category Name: teddy bear, Category ID: 71, Total Instances: 161
+Category Name: hair drier, Category ID: 72, Total Instances: 8
+Category Name: toothbrush, Category ID: 73, Total Instances: 50
+Category Name: unknown, Category ID: 80, Total Instances: 2423
+Task
+Category Name: person, Category ID: 14, Total Instances: 9733
+Category Name: bicycle, Category ID: 1, Total Instances: 82
+Category Name: car, Category ID: 6, Total Instances: 179
+Category Name: motorcycle, Category ID: 13, Total Instances: 34
+Category Name: airplane, Category ID: 0, Total Instances: 8
+Category Name: bus, Category ID: 5, Total Instances: 17
+Category Name: train, Category ID: 18, Total Instances: 35
+Category Name: truck, Category ID: 20, Total Instances: 31
+Category Name: boat, Category ID: 3, Total Instances: 47
+Category Name: traffic light, Category ID: 21, Total Instances: 32
+Category Name: fire hydrant, Category ID: 22, Total Instances: 8
+Category Name: stop sign, Category ID: 23, Total Instances: 15
+Category Name: parking meter, Category ID: 24, Total Instances: 9
+Category Name: bench, Category ID: 25, Total Instances: 147
+Category Name: bird, Category ID: 2, Total Instances: 123
+Category Name: cat, Category ID: 7, Total Instances: 1241
+Category Name: dog, Category ID: 11, Total Instances: 524
+Category Name: horse, Category ID: 12, Total Instances: 37
+Category Name: sheep, Category ID: 16, Total Instances: 6
+Category Name: cow, Category ID: 9, Total Instances: 14
+Category Name: elephant, Category ID: 26, Total Instances: 13
+Category Name: bear, Category ID: 27, Total Instances: 21
+Category Name: zebra, Category ID: 28, Total Instances: 5
+Category Name: giraffe, Category ID: 29, Total Instances: 5
+Category Name: backpack, Category ID: 30, Total Instances: 248
+Category Name: umbrella, Category ID: 31, Total Instances: 84
+Category Name: handbag, Category ID: 32, Total Instances: 395
+Category Name: tie, Category ID: 33, Total Instances: 293
+Category Name: suitcase, Category ID: 34, Total Instances: 186
+Category Name: frisbee, Category ID: 40, Total Instances: 7
+Category Name: skis, Category ID: 41, Total Instances: 3
+Category Name: snowboard, Category ID: 42, Total Instances: 2
+Category Name: sports ball, Category ID: 43, Total Instances: 36
+Category Name: kite, Category ID: 44, Total Instances: 15
+Category Name: baseball bat, Category ID: 45, Total Instances: 10
+Category Name: baseball glove, Category ID: 46, Total Instances: 1
+Category Name: skateboard, Category ID: 47, Total Instances: 4
+Category Name: surfboard, Category ID: 48, Total Instances: 7
+Category Name: tennis racket, Category ID: 49, Total Instances: 11
+Category Name: bottle, Category ID: 4, Total Instances: 4134
+Category Name: wine glass, Category ID: 74, Total Instances: 4124
+Category Name: cup, Category ID: 75, Total Instances: 10995
+Category Name: fork, Category ID: 76, Total Instances: 2974
+Category Name: knife, Category ID: 77, Total Instances: 4479
+Category Name: spoon, Category ID: 78, Total Instances: 3769
+Category Name: bowl, Category ID: 79, Total Instances: 7792
+Category Name: banana, Category ID: 50, Total Instances: 258
+Category Name: apple, Category ID: 51, Total Instances: 293
+Category Name: sandwich, Category ID: 52, Total Instances: 950
+Category Name: orange, Category ID: 53, Total Instances: 254
+Category Name: broccoli, Category ID: 54, Total Instances: 374
+Category Name: carrot, Category ID: 55, Total Instances: 406
+Category Name: hot dog, Category ID: 56, Total Instances: 155
+Category Name: pizza, Category ID: 57, Total Instances: 897
+Category Name: donut, Category ID: 58, Total Instances: 232
+Category Name: cake, Category ID: 59, Total Instances: 927
+Category Name: chair, Category ID: 8, Total Instances: 4615
+Category Name: couch, Category ID: 17, Total Instances: 1652
+Category Name: potted plant, Category ID: 15, Total Instances: 1508
+Category Name: bed, Category ID: 60, Total Instances: 2948
+Category Name: dining table, Category ID: 10, Total Instances: 3412
+Category Name: toilet, Category ID: 61, Total Instances: 3043
+Category Name: tv, Category ID: 19, Total Instances: 2406
+Category Name: laptop, Category ID: 62, Total Instances: 2994
+Category Name: mouse, Category ID: 63, Total Instances: 1887
+Category Name: remote, Category ID: 64, Total Instances: 3054
+Category Name: keyboard, Category ID: 65, Total Instances: 2327
+Category Name: cell phone, Category ID: 66, Total Instances: 2793
+Category Name: microwave, Category ID: 35, Total Instances: 332
+Category Name: oven, Category ID: 36, Total Instances: 720
+Category Name: toaster, Category ID: 37, Total Instances: 63
+Category Name: sink, Category ID: 38, Total Instances: 1675
+Category Name: refrigerator, Category ID: 39, Total Instances: 383
+Category Name: book, Category ID: 67, Total Instances: 21561
+Category Name: clock, Category ID: 68, Total Instances: 3786
+Category Name: vase, Category ID: 69, Total Instances: 4362
+Category Name: scissors, Category ID: 70, Total Instances: 1141
+Category Name: teddy bear, Category ID: 71, Total Instances: 3881
+Category Name: hair drier, Category ID: 72, Total Instances: 99
+Category Name: toothbrush, Category ID: 73, Total Instances: 1480
+Stats of new file trained processed
+Category Name: person, Category ID: 14, Total Instances: 136840
+Category Name: bicycle, Category ID: 1, Total Instances: 5179
+Category Name: car, Category ID: 6, Total Instances: 27223
+Category Name: motorcycle, Category ID: 13, Total Instances: 7743
+Category Name: airplane, Category ID: 0, Total Instances: 4179
+Category Name: bus, Category ID: 5, Total Instances: 4529
+Category Name: train, Category ID: 18, Total Instances: 3512
+Category Name: truck, Category ID: 20, Total Instances: 0
+Category Name: boat, Category ID: 3, Total Instances: 9537
+Category Name: traffic light, Category ID: 21, Total Instances: 0
+Category Name: fire hydrant, Category ID: 22, Total Instances: 0
+Category Name: stop sign, Category ID: 23, Total Instances: 0
+Category Name: parking meter, Category ID: 24, Total Instances: 0
+Category Name: bench, Category ID: 25, Total Instances: 0
+Category Name: bird, Category ID: 2, Total Instances: 9300
+Category Name: cat, Category ID: 7, Total Instances: 2082
+Category Name: dog, Category ID: 11, Total Instances: 3177
+Category Name: horse, Category ID: 12, Total Instances: 6117
+Category Name: sheep, Category ID: 16, Total Instances: 9359
+Category Name: cow, Category ID: 9, Total Instances: 7892
+Category Name: elephant, Category ID: 26, Total Instances: 0
+Category Name: bear, Category ID: 27, Total Instances: 0
+Category Name: zebra, Category ID: 28, Total Instances: 0
+Category Name: giraffe, Category ID: 29, Total Instances: 0
+Category Name: backpack, Category ID: 30, Total Instances: 0
+Category Name: umbrella, Category ID: 31, Total Instances: 0
+Category Name: handbag, Category ID: 32, Total Instances: 0
+Category Name: tie, Category ID: 33, Total Instances: 0
+Category Name: suitcase, Category ID: 34, Total Instances: 0
+Category Name: frisbee, Category ID: 40, Total Instances: 0
+Category Name: skis, Category ID: 41, Total Instances: 0
+Category Name: snowboard, Category ID: 42, Total Instances: 0
+Category Name: sports ball, Category ID: 43, Total Instances: 0
+Category Name: kite, Category ID: 44, Total Instances: 0
+Category Name: baseball bat, Category ID: 45, Total Instances: 0
+Category Name: baseball glove, Category ID: 46, Total Instances: 0
+Category Name: skateboard, Category ID: 47, Total Instances: 0
+Category Name: surfboard, Category ID: 48, Total Instances: 0
+Category Name: tennis racket, Category ID: 49, Total Instances: 0
+Category Name: bottle, Category ID: 4, Total Instances: 8616
+Category Name: wine glass, Category ID: 74, Total Instances: 0
+Category Name: cup, Category ID: 75, Total Instances: 0
+Category Name: fork, Category ID: 76, Total Instances: 0
+Category Name: knife, Category ID: 77, Total Instances: 0
+Category Name: spoon, Category ID: 78, Total Instances: 0
+Category Name: bowl, Category ID: 79, Total Instances: 0
+Category Name: banana, Category ID: 50, Total Instances: 0
+Category Name: apple, Category ID: 51, Total Instances: 0
+Category Name: sandwich, Category ID: 52, Total Instances: 0
+Category Name: orange, Category ID: 53, Total Instances: 0
+Category Name: broccoli, Category ID: 54, Total Instances: 0
+Category Name: carrot, Category ID: 55, Total Instances: 0
+Category Name: hot dog, Category ID: 56, Total Instances: 0
+Category Name: pizza, Category ID: 57, Total Instances: 0
+Category Name: donut, Category ID: 58, Total Instances: 0
+Category Name: cake, Category ID: 59, Total Instances: 0
+Category Name: chair, Category ID: 8, Total Instances: 21104
+Category Name: couch, Category ID: 17, Total Instances: 2013
+Category Name: potted plant, Category ID: 15, Total Instances: 4000
+Category Name: bed, Category ID: 60, Total Instances: 0
+Category Name: dining table, Category ID: 10, Total Instances: 4833
+Category Name: toilet, Category ID: 61, Total Instances: 0
+Category Name: tv, Category ID: 19, Total Instances: 1789
+Category Name: laptop, Category ID: 62, Total Instances: 0
+Category Name: mouse, Category ID: 63, Total Instances: 0
+Category Name: remote, Category ID: 64, Total Instances: 0
+Category Name: keyboard, Category ID: 65, Total Instances: 0
+Category Name: cell phone, Category ID: 66, Total Instances: 0
+Category Name: microwave, Category ID: 35, Total Instances: 0
+Category Name: oven, Category ID: 36, Total Instances: 0
+Category Name: toaster, Category ID: 37, Total Instances: 0
+Category Name: sink, Category ID: 38, Total Instances: 0
+Category Name: refrigerator, Category ID: 39, Total Instances: 0
+Category Name: book, Category ID: 67, Total Instances: 0
+Category Name: clock, Category ID: 68, Total Instances: 0
+Category Name: vase, Category ID: 69, Total Instances: 0
+Category Name: scissors, Category ID: 70, Total Instances: 0
+Category Name: teddy bear, Category ID: 71, Total Instances: 0
+Category Name: hair drier, Category ID: 72, Total Instances: 0
+Category Name: toothbrush, Category ID: 73, Total Instances: 0
+Stats of new file trained processed
+Category Name: person, Category ID: 14, Total Instances: 18844
+Category Name: bicycle, Category ID: 1, Total Instances: 524
+Category Name: car, Category ID: 6, Total Instances: 5745
+Category Name: motorcycle, Category ID: 13, Total Instances: 389
+Category Name: airplane, Category ID: 0, Total Instances: 482
+Category Name: bus, Category ID: 5, Total Instances: 554
+Category Name: train, Category ID: 18, Total Instances: 568
+Category Name: truck, Category ID: 20, Total Instances: 3968
+Category Name: boat, Category ID: 3, Total Instances: 429
+Category Name: traffic light, Category ID: 21, Total Instances: 7522
+Category Name: fire hydrant, Category ID: 22, Total Instances: 1144
+Category Name: stop sign, Category ID: 23, Total Instances: 1190
+Category Name: parking meter, Category ID: 24, Total Instances: 797
+Category Name: bench, Category ID: 25, Total Instances: 4312
+Category Name: bird, Category ID: 2, Total Instances: 599
+Category Name: cat, Category ID: 7, Total Instances: 449
+Category Name: dog, Category ID: 11, Total Instances: 338
+Category Name: horse, Category ID: 12, Total Instances: 193
+Category Name: sheep, Category ID: 16, Total Instances: 267
+Category Name: cow, Category ID: 9, Total Instances: 211
+Category Name: elephant, Category ID: 26, Total Instances: 4618
+Category Name: bear, Category ID: 27, Total Instances: 1195
+Category Name: zebra, Category ID: 28, Total Instances: 5126
+Category Name: giraffe, Category ID: 29, Total Instances: 4772
+Category Name: backpack, Category ID: 30, Total Instances: 2668
+Category Name: umbrella, Category ID: 31, Total Instances: 5932
+Category Name: handbag, Category ID: 32, Total Instances: 4099
+Category Name: tie, Category ID: 33, Total Instances: 2493
+Category Name: suitcase, Category ID: 34, Total Instances: 4782
+Category Name: frisbee, Category ID: 40, Total Instances: 0
+Category Name: skis, Category ID: 41, Total Instances: 0
+Category Name: snowboard, Category ID: 42, Total Instances: 0
+Category Name: sports ball, Category ID: 43, Total Instances: 0
+Category Name: kite, Category ID: 44, Total Instances: 0
+Category Name: baseball bat, Category ID: 45, Total Instances: 0
+Category Name: baseball glove, Category ID: 46, Total Instances: 0
+Category Name: skateboard, Category ID: 47, Total Instances: 0
+Category Name: surfboard, Category ID: 48, Total Instances: 0
+Category Name: tennis racket, Category ID: 49, Total Instances: 0
+Category Name: bottle, Category ID: 4, Total Instances: 678
+Category Name: wine glass, Category ID: 74, Total Instances: 0
+Category Name: cup, Category ID: 75, Total Instances: 0
+Category Name: fork, Category ID: 76, Total Instances: 0
+Category Name: knife, Category ID: 77, Total Instances: 0
+Category Name: spoon, Category ID: 78, Total Instances: 0
+Category Name: bowl, Category ID: 79, Total Instances: 0
+Category Name: banana, Category ID: 50, Total Instances: 0
+Category Name: apple, Category ID: 51, Total Instances: 0
+Category Name: sandwich, Category ID: 52, Total Instances: 0
+Category Name: orange, Category ID: 53, Total Instances: 0
+Category Name: broccoli, Category ID: 54, Total Instances: 0
+Category Name: carrot, Category ID: 55, Total Instances: 0
+Category Name: hot dog, Category ID: 56, Total Instances: 0
+Category Name: pizza, Category ID: 57, Total Instances: 0
+Category Name: donut, Category ID: 58, Total Instances: 0
+Category Name: cake, Category ID: 59, Total Instances: 0
+Category Name: chair, Category ID: 8, Total Instances: 1402
+Category Name: couch, Category ID: 17, Total Instances: 119
+Category Name: potted plant, Category ID: 15, Total Instances: 528
+Category Name: bed, Category ID: 60, Total Instances: 0
+Category Name: dining table, Category ID: 10, Total Instances: 370
+Category Name: toilet, Category ID: 61, Total Instances: 0
+Category Name: tv, Category ID: 19, Total Instances: 207
+Category Name: laptop, Category ID: 62, Total Instances: 0
+Category Name: mouse, Category ID: 63, Total Instances: 0
+Category Name: remote, Category ID: 64, Total Instances: 0
+Category Name: keyboard, Category ID: 65, Total Instances: 0
+Category Name: cell phone, Category ID: 66, Total Instances: 0
+Category Name: microwave, Category ID: 35, Total Instances: 720
+Category Name: oven, Category ID: 36, Total Instances: 1245
+Category Name: toaster, Category ID: 37, Total Instances: 68
+Category Name: sink, Category ID: 38, Total Instances: 2541
+Category Name: refrigerator, Category ID: 39, Total Instances: 1024
+Category Name: book, Category ID: 67, Total Instances: 0
+Category Name: clock, Category ID: 68, Total Instances: 0
+Category Name: vase, Category ID: 69, Total Instances: 0
+Category Name: scissors, Category ID: 70, Total Instances: 0
+Category Name: teddy bear, Category ID: 71, Total Instances: 0
+Category Name: hair drier, Category ID: 72, Total Instances: 0
+Category Name: toothbrush, Category ID: 73, Total Instances: 0
+Stats of new file trained processed
+Category Name: person, Category ID: 14, Total Instances: 30854
+Category Name: bicycle, Category ID: 1, Total Instances: 375
+Category Name: car, Category ID: 6, Total Instances: 1708
+Category Name: motorcycle, Category ID: 13, Total Instances: 345
+Category Name: airplane, Category ID: 0, Total Instances: 69
+Category Name: bus, Category ID: 5, Total Instances: 182
+Category Name: train, Category ID: 18, Total Instances: 61
+Category Name: truck, Category ID: 20, Total Instances: 407
+Category Name: boat, Category ID: 3, Total Instances: 281
+Category Name: traffic light, Category ID: 21, Total Instances: 495
+Category Name: fire hydrant, Category ID: 22, Total Instances: 57
+Category Name: stop sign, Category ID: 23, Total Instances: 58
+Category Name: parking meter, Category ID: 24, Total Instances: 55
+Category Name: bench, Category ID: 25, Total Instances: 378
+Category Name: bird, Category ID: 2, Total Instances: 434
+Category Name: cat, Category ID: 7, Total Instances: 121
+Category Name: dog, Category ID: 11, Total Instances: 533
+Category Name: horse, Category ID: 12, Total Instances: 121
+Category Name: sheep, Category ID: 16, Total Instances: 87
+Category Name: cow, Category ID: 9, Total Instances: 55
+Category Name: elephant, Category ID: 26, Total Instances: 97
+Category Name: bear, Category ID: 27, Total Instances: 83
+Category Name: zebra, Category ID: 28, Total Instances: 61
+Category Name: giraffe, Category ID: 29, Total Instances: 51
+Category Name: backpack, Category ID: 30, Total Instances: 615
+Category Name: umbrella, Category ID: 31, Total Instances: 680
+Category Name: handbag, Category ID: 32, Total Instances: 829
+Category Name: tie, Category ID: 33, Total Instances: 202
+Category Name: suitcase, Category ID: 34, Total Instances: 322
+Category Name: frisbee, Category ID: 40, Total Instances: 1042
+Category Name: skis, Category ID: 41, Total Instances: 3548
+Category Name: snowboard, Category ID: 42, Total Instances: 1676
+Category Name: sports ball, Category ID: 43, Total Instances: 3892
+Category Name: kite, Category ID: 44, Total Instances: 6274
+Category Name: baseball bat, Category ID: 45, Total Instances: 1297
+Category Name: baseball glove, Category ID: 46, Total Instances: 1563
+Category Name: skateboard, Category ID: 47, Total Instances: 1984
+Category Name: surfboard, Category ID: 48, Total Instances: 4110
+Category Name: tennis racket, Category ID: 49, Total Instances: 2890
+Category Name: bottle, Category ID: 4, Total Instances: 2007
+Category Name: wine glass, Category ID: 74, Total Instances: 0
+Category Name: cup, Category ID: 75, Total Instances: 0
+Category Name: fork, Category ID: 76, Total Instances: 0
+Category Name: knife, Category ID: 77, Total Instances: 0
+Category Name: spoon, Category ID: 78, Total Instances: 0
+Category Name: bowl, Category ID: 79, Total Instances: 0
+Category Name: banana, Category ID: 50, Total Instances: 8344
+Category Name: apple, Category ID: 51, Total Instances: 4911
+Category Name: sandwich, Category ID: 52, Total Instances: 2457
+Category Name: orange, Category ID: 53, Total Instances: 5547
+Category Name: broccoli, Category ID: 54, Total Instances: 6728
+Category Name: carrot, Category ID: 55, Total Instances: 7076
+Category Name: hot dog, Category ID: 56, Total Instances: 2064
+Category Name: pizza, Category ID: 57, Total Instances: 2575
+Category Name: donut, Category ID: 58, Total Instances: 6262
+Category Name: cake, Category ID: 59, Total Instances: 3618
+Category Name: chair, Category ID: 8, Total Instances: 1559
+Category Name: couch, Category ID: 17, Total Instances: 104
+Category Name: potted plant, Category ID: 15, Total Instances: 368
+Category Name: bed, Category ID: 60, Total Instances: 0
+Category Name: dining table, Category ID: 10, Total Instances: 2598
+Category Name: toilet, Category ID: 61, Total Instances: 0
+Category Name: tv, Category ID: 19, Total Instances: 117
+Category Name: laptop, Category ID: 62, Total Instances: 0
+Category Name: mouse, Category ID: 63, Total Instances: 0
+Category Name: remote, Category ID: 64, Total Instances: 0
+Category Name: keyboard, Category ID: 65, Total Instances: 0
+Category Name: cell phone, Category ID: 66, Total Instances: 0
+Category Name: microwave, Category ID: 35, Total Instances: 119
+Category Name: oven, Category ID: 36, Total Instances: 351
+Category Name: toaster, Category ID: 37, Total Instances: 57
+Category Name: sink, Category ID: 38, Total Instances: 159
+Category Name: refrigerator, Category ID: 39, Total Instances: 191
+Category Name: book, Category ID: 67, Total Instances: 0
+Category Name: clock, Category ID: 68, Total Instances: 0
+Category Name: vase, Category ID: 69, Total Instances: 0
+Category Name: scissors, Category ID: 70, Total Instances: 0
+Category Name: teddy bear, Category ID: 71, Total Instances: 0
+Category Name: hair drier, Category ID: 72, Total Instances: 0
+Category Name: toothbrush, Category ID: 73, Total Instances: 0
+Stats of new file trained processed
+Category Name: person, Category ID: 14, Total Instances: 14974
+Category Name: bicycle, Category ID: 1, Total Instances: 354
+Category Name: car, Category ID: 6, Total Instances: 1617
+Category Name: motorcycle, Category ID: 13, Total Instances: 331
+Category Name: airplane, Category ID: 0, Total Instances: 67
+Category Name: bus, Category ID: 5, Total Instances: 168
+Category Name: train, Category ID: 18, Total Instances: 85
+Category Name: truck, Category ID: 20, Total Instances: 302
+Category Name: boat, Category ID: 3, Total Instances: 228
+Category Name: traffic light, Category ID: 21, Total Instances: 528
+Category Name: fire hydrant, Category ID: 22, Total Instances: 58
+Category Name: stop sign, Category ID: 23, Total Instances: 66
+Category Name: parking meter, Category ID: 24, Total Instances: 63
+Category Name: bench, Category ID: 25, Total Instances: 415
+Category Name: bird, Category ID: 2, Total Instances: 431
+Category Name: cat, Category ID: 7, Total Instances: 1294
+Category Name: dog, Category ID: 11, Total Instances: 621
+Category Name: horse, Category ID: 12, Total Instances: 137
+Category Name: sheep, Category ID: 16, Total Instances: 84
+Category Name: cow, Category ID: 9, Total Instances: 71
+Category Name: elephant, Category ID: 26, Total Instances: 88
+Category Name: bear, Category ID: 27, Total Instances: 75
+Category Name: zebra, Category ID: 28, Total Instances: 64
+Category Name: giraffe, Category ID: 29, Total Instances: 56
+Category Name: backpack, Category ID: 30, Total Instances: 602
+Category Name: umbrella, Category ID: 31, Total Instances: 743
+Category Name: handbag, Category ID: 32, Total Instances: 996
+Category Name: tie, Category ID: 33, Total Instances: 455
+Category Name: suitcase, Category ID: 34, Total Instances: 485
+Category Name: frisbee, Category ID: 40, Total Instances: 64
+Category Name: skis, Category ID: 41, Total Instances: 66
+Category Name: snowboard, Category ID: 42, Total Instances: 54
+Category Name: sports ball, Category ID: 43, Total Instances: 126
+Category Name: kite, Category ID: 44, Total Instances: 177
+Category Name: baseball bat, Category ID: 45, Total Instances: 62
+Category Name: baseball glove, Category ID: 46, Total Instances: 78
+Category Name: skateboard, Category ID: 47, Total Instances: 59
+Category Name: surfboard, Category ID: 48, Total Instances: 76
+Category Name: tennis racket, Category ID: 49, Total Instances: 74
+Category Name: bottle, Category ID: 4, Total Instances: 4993
+Category Name: wine glass, Category ID: 74, Total Instances: 4124
+Category Name: cup, Category ID: 75, Total Instances: 10995
+Category Name: fork, Category ID: 76, Total Instances: 2974
+Category Name: knife, Category ID: 77, Total Instances: 4479
+Category Name: spoon, Category ID: 78, Total Instances: 3769
+Category Name: bowl, Category ID: 79, Total Instances: 7792
+Category Name: banana, Category ID: 50, Total Instances: 427
+Category Name: apple, Category ID: 51, Total Instances: 422
+Category Name: sandwich, Category ID: 52, Total Instances: 1042
+Category Name: orange, Category ID: 53, Total Instances: 409
+Category Name: broccoli, Category ID: 54, Total Instances: 476
+Category Name: carrot, Category ID: 55, Total Instances: 588
+Category Name: hot dog, Category ID: 56, Total Instances: 304
+Category Name: pizza, Category ID: 57, Total Instances: 1015
+Category Name: donut, Category ID: 58, Total Instances: 406
+Category Name: cake, Category ID: 59, Total Instances: 1027
+Category Name: chair, Category ID: 8, Total Instances: 6258
+Category Name: couch, Category ID: 17, Total Instances: 1706
+Category Name: potted plant, Category ID: 15, Total Instances: 1733
+Category Name: bed, Category ID: 60, Total Instances: 2948
+Category Name: dining table, Category ID: 10, Total Instances: 3684
+Category Name: toilet, Category ID: 61, Total Instances: 3043
+Category Name: tv, Category ID: 19, Total Instances: 2476
+Category Name: laptop, Category ID: 62, Total Instances: 2994
+Category Name: mouse, Category ID: 63, Total Instances: 1887
+Category Name: remote, Category ID: 64, Total Instances: 3054
+Category Name: keyboard, Category ID: 65, Total Instances: 2327
+Category Name: cell phone, Category ID: 66, Total Instances: 2793
+Category Name: microwave, Category ID: 35, Total Instances: 395
+Category Name: oven, Category ID: 36, Total Instances: 811
+Category Name: toaster, Category ID: 37, Total Instances: 113
+Category Name: sink, Category ID: 38, Total Instances: 1740
+Category Name: refrigerator, Category ID: 39, Total Instances: 492
+Category Name: book, Category ID: 67, Total Instances: 21561
+Category Name: clock, Category ID: 68, Total Instances: 3786
+Category Name: vase, Category ID: 69, Total Instances: 4362
+Category Name: scissors, Category ID: 70, Total Instances: 1141
+Category Name: teddy bear, Category ID: 71, Total Instances: 3881
+Category Name: hair drier, Category ID: 72, Total Instances: 99
+Category Name: toothbrush, Category ID: 73, Total Instances: 1480
